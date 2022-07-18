@@ -1,0 +1,51 @@
+.menuPanel {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 275px;
+  height: calc(100vh - 50px);
+  left: -275px;
+  padding: 30px 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: left 0.4s;
+  gap: 21px;
+
+  &.show {
+    left: 0px;
+  }
+
+  .option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .icon {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        background-color: #787878;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+
+        .faIcon {
+          color: #cccccc;
+        }
+      }
+
+      .text {
+        color: #cccccc;
+        font-weight: 600;
+      }
+    }
+
+    .faIconSub {
+      color: #cccccc;
+    }
+  }
+}
