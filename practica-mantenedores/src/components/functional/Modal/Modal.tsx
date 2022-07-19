@@ -15,17 +15,20 @@ const Modal = () => {
   const { modal, setModal } = useContext(UiContext);
 
   const handleModalCrud = async () => {
-    const server = new Crud(modal.endPoint);
+    const server = new Crud(`${modal.endPoint}/${modal.table}`);
 
     switch (modal.type) {
       case "post":
-        await server.post("/add", { id: id, name: text });
+        console.log("modal post values: ", modal);
+        await server.post("/add", { id: id, name: text, table: modal.table });
         break;
       case "put":
-        await server.put("/modify", { id: id, name: text });
+        console.log("modal put values: ", modal);
+        await server.put("/modify", { id: id, name: text, table: modal.table });
         break;
       case "delete":
-        await server.delete("/erase", { id: id, name: text });
+        console.log("modal delete values: ", modal);
+        await server.delete("/erase", { id: id, name: text, table: modal.table });
         break;
       default:
         console.log("Crud operation not valid");
@@ -39,6 +42,7 @@ const Modal = () => {
       accept: "",
       reject: "",
       endPoint: "",
+      table: "",
       data: null,
     });
   };
@@ -67,6 +71,7 @@ const Modal = () => {
                 accept: "",
                 reject: "",
                 endPoint: "",
+                table: "",
                 data: null,
               });
             }}
@@ -101,6 +106,7 @@ const Modal = () => {
                 accept: "",
                 reject: "",
                 endPoint: "",
+                table: "",
                 data: null,
               });
             }}

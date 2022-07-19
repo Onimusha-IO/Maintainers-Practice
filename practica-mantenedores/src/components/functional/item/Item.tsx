@@ -1,0 +1,57 @@
+import { useContext } from "react";
+
+import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import UiContext from "../../../context/ui";
+
+import styles from "./Item.module.scss";
+
+const Item = ({ e, table }: any) => {
+  const { setModal } = useContext(UiContext);
+
+  return (
+    <>
+      {e && (
+        <div className={styles.dough}>
+          <label>{e.name}</label>
+          <div className={styles.controls}>
+            <FontAwesomeIcon
+              icon={faPencil}
+              className={styles.icon}
+              onClick={() => {
+                setModal({
+                  state: true,
+                  type: "put",
+                  tittle: "Modificar masa",
+                  accept: "Modificar",
+                  reject: "Cancelar",
+                  endPoint: "/api",
+                  table: table,
+                  data: { name: e.name, id: e.id },
+                });
+              }}
+            />
+            <FontAwesomeIcon
+              icon={faTrash}
+              className={styles.icon}
+              onClick={() => {
+                setModal({
+                  state: true,
+                  type: "delete",
+                  tittle: "¿Está seguro que desea eliminar el registro?",
+                  accept: "Si",
+                  reject: "No",
+                  endPoint: "/api/dough",
+                  data: { name: e.name, id: e.id },
+                });
+              }}
+            />
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default Item;

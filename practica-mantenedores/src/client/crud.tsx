@@ -8,9 +8,9 @@ class Crud {
     this.route = route;
   }
 
-  get = async (endPoint: string) => {
+  get = async (endPoint: string, values: any) => {
     try {
-      const res = await client.get(`${this.route}/${endPoint}`, { headers: config.headers });
+      const res = await client.get(`${this.route}/${endPoint}`, { params: { table: values }, headers: config.headers });
       if (res.status === 200) {
         return res;
       }
@@ -54,4 +54,4 @@ class Crud {
   };
 }
 
-export default Crud
+export default Crud;

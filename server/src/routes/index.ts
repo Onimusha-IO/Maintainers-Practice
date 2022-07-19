@@ -1,4 +1,4 @@
 import UserRouter from "./user";
-import DoughRouter from "./dough";
+import MantainerRouter from "./mantainer";
 
-export { UserRouter, DoughRouter };
+export { UserRouter, MantainerRouter };

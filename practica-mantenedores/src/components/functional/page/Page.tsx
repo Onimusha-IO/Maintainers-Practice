@@ -1,35 +1,19 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 
-import Dough from "../../../components/functional/Dough";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
-import Modal from "../../../components/functional/Modal";
+import Modal from "../Modal";
 import UiContext from "../../../context/ui";
-import Crud from "../../../client/crud";
 
-import styles from "./DoughPage.module.scss";
+import styles from "./Page.module.scss";
 
-const DoughPage = () => {
-  const [list, setList] = useState<[]>();
-
+const Page = ({ tittle, content }: any) => {
   const { modal, setModal } = useContext(UiContext);
-
-  const getList = async () => {
-    const server = new Crud("/api/dough");
-    const res = await server.get("/list");
-    setList(res?.data);
-  };
-
-  useEffect(() => {
-    if (modal.state === false) {
-      getList();
-    }
-  }, [modal]);
 
   return (
     <div className={styles.page}>
-      <label className={styles.label}>Masas</label>
-      {modal.state ? <Modal /> : <Dough list={list} />}
+      <label className={styles.label}>{tittle}</label>
+      <div className={styles.content}>{modal.state ? <Modal /> : content}</div>
       <div
         className={styles.add}
         onClick={() => {
@@ -50,4 +34,4 @@ const DoughPage = () => {
   );
 };
 
-export default DoughPage;
+export default Page;

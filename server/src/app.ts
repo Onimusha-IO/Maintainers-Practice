@@ -21,7 +21,7 @@ class App {
 
   routes() {
     this.server.use("/api/user", routes.UserRouter);
-    this.server.use("/api/dough", routes.DoughRouter);
+    this.server.use("/api/mantainer", routes.MantainerRouter);
   }
 }
 

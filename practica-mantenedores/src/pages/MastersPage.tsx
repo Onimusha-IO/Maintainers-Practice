@@ -1,4 +1,4 @@
-import DoughPage from "./masters/dough/DoughPage";
+import DoughPage from "./masters/DoughPage";
 
 const MastersPage = () => {
   return <DoughPage />;

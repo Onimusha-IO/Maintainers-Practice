@@ -1,7 +1,8 @@
-import * as DoughModel from "../models/dough";
+import * as MantainerModel from "../models/mantainer";
 
 const list = async (req: any, res: any) => {
-  const result = await DoughModel.list(req.body);
+  // console.log("list controller values: ", req);
+  const result = await MantainerModel.list(req.query);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -11,7 +12,7 @@ const list = async (req: any, res: any) => {
 };
 
 const add = async (req: any, res: any) => {
-  const result = await DoughModel.add(req.body);
+  const result = await MantainerModel.add(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -21,7 +22,7 @@ const add = async (req: any, res: any) => {
 };
 
 const modify = async (req: any, res: any) => {
-  const result = await DoughModel.modify(req.body);
+  const result = await MantainerModel.modify(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -31,7 +32,7 @@ const modify = async (req: any, res: any) => {
 };
 
 const erase = async (req: any, res: any) => {
-  const result = await DoughModel.erase(req.body);
+  const result = await MantainerModel.erase(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
