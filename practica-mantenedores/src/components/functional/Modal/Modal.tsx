@@ -4,9 +4,9 @@ import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import UiContext from "../../../context/ui";
-import { call } from "../../../client/crud";
 
 import styles from "./Modal.module.scss";
+import Crud from "../../../client/crud";
 
 const Modal = () => {
   const [text, setText] = useState("");
@@ -14,8 +14,33 @@ const Modal = () => {
 
   const { modal, setModal } = useContext(UiContext);
 
-  const cancelModal = () => {
-    setModal({ state: false, type: null, title: "", accept: "", reject: "", data: null });
+  const handleModalCrud = async () => {
+    const server = new Crud(modal.endPoint);
+
+    switch (modal.type) {
+      case "post":
+        await server.post("/add", { id: id, name: text });
+        break;
+      case "put":
+        await server.put("/modify", { id: id, name: text });
+        break;
+      case "delete":
+        await server.delete("/erase", { id: id, name: text });
+        break;
+      default:
+        console.log("Crud operation not valid");
+        break;
+    }
+
+    setModal({
+      state: false,
+      type: null,
+      title: "",
+      accept: "",
+      reject: "",
+      endPoint: "",
+      data: null,
+    });
   };
 
   useEffect(() => {
@@ -35,7 +60,15 @@ const Modal = () => {
             icon={faCircleXmark}
             className={styles.iconRight}
             onClick={() => {
-              setModal({ state: false, type: null, data: null });
+              setModal({
+                state: false,
+                type: null,
+                title: "",
+                accept: "",
+                reject: "",
+                endPoint: "",
+                data: null,
+              });
             }}
           />
         </div>
@@ -67,6 +100,7 @@ const Modal = () => {
                 title: "",
                 accept: "",
                 reject: "",
+                endPoint: "",
                 data: null,
               });
             }}
@@ -77,13 +111,13 @@ const Modal = () => {
             <button
               className={styles.buttons}
               onClick={() => {
-                call(modal.type, { id: id, name: text }, cancelModal);
+                handleModalCrud();
               }}
             >
               {modal.accept}
             </button>
           ) : (
-            <button className={styles.buttons} onClick={() => {}} disabled>
+            <button className={styles.buttonsOff} onClick={() => {}} disabled>
               {modal.accept}
             </button>
           )}

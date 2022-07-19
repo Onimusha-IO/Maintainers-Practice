@@ -1,10 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import UiContext from "../../context/ui";
 
-import client from "../../client/client";
-import { config } from "../../utils/config";
-
 import styles from "./Login.module.scss";
+import Crud from "../../client/crud";
 
 const Login = () => {
   const { setUserValidated } = useContext(UiContext);
@@ -13,16 +11,13 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
 
-  const loginRequest = async (email: any, password: any, config: any) => {
+  const loginRequest = async (email: any, password: any) => {
+    const server = new Crud("/api/user");
     try {
-      const res = await client.post(
-        "/api/user/validate",
-        { email, password },
-        {headers: config.headers}
-      );
+      const res = await server.post("/validate", { email, password });
 
-      if (res.status === 200) {
-        console.log("success: ", res);
+      if (res?.status === 200) {
+        console.log("success: >>", res);
         setUserValidated(true);
         setError(false);
       }
@@ -68,7 +63,7 @@ const Login = () => {
         <button
           type="submit"
           onClick={() => {
-            loginRequest(email, password, config);
+            loginRequest(email, password);
           }}
         >
           Ingresar

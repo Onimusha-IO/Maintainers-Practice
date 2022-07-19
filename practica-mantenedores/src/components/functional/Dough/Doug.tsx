@@ -29,6 +29,7 @@ const Dough = ({ list }: any) => {
                         tittle: "Modificar masa",
                         accept: "Modificar",
                         reject: "Cancelar",
+                        endPoint: "/api/dough",
                         data: { name: e.name, id: e.id },
                       });
                     }}
@@ -43,6 +44,7 @@ const Dough = ({ list }: any) => {
                         tittle: "¿Está seguro que desea eliminar el registro?",
                         accept: "Si",
                         reject: "No",
+                        endPoint: "/api/dough",
                         data: { name: e.name, id: e.id },
                       });
                     }}

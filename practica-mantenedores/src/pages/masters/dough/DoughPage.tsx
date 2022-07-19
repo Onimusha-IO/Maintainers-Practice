@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import Modal from "../../../components/functional/Modal";
 import UiContext from "../../../context/ui";
-import { get } from "../../../client/crud";
+import Crud from "../../../client/crud";
 
 import styles from "./DoughPage.module.scss";
 
@@ -15,8 +15,9 @@ const DoughPage = () => {
   const { modal, setModal } = useContext(UiContext);
 
   const getList = async () => {
-    const res = await get();
-    setList(res);
+    const server = new Crud("/api/dough");
+    const res = await server.get("/list");
+    setList(res?.data);
   };
 
   useEffect(() => {
@@ -32,7 +33,15 @@ const DoughPage = () => {
       <div
         className={styles.add}
         onClick={() => {
-          setModal({...modal, state: true, type: "post", tittle: "Nueva masa", accept: "Registrar", reject: "Cancelar" });
+          setModal({
+            ...modal,
+            state: true,
+            type: "post",
+            tittle: "Nueva masa",
+            accept: "Registrar",
+            reject: "Cancelar",
+            endPoint: "/api/dough",
+          });
         }}
       >
         <FontAwesomeIcon icon={faCirclePlus} className={styles.icon} />

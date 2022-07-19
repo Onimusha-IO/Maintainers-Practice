@@ -11,6 +11,7 @@ const UiProvider = ({ children }: any) => {
     title: "",
     accept: "",
     reject: "",
+    endPoint: "",
     data: null,
   });
 
