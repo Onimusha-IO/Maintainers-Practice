@@ -1,6 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import Menu from "../../components/Menu";
 import HomePage from "../../pages/HomePage";
+import CreamPage from "../../pages/masters/CreamPage";
+import DoughPage from "../../pages/masters/DoughPage";
 import MastersPage from "../../pages/MastersPage";
 import ProcessesPage from "../../pages/ProcessesPage";
 import ReportsPage from "../../pages/ReportsPage";
@@ -16,7 +18,8 @@ const Body = () => {
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="*" element={<HomePage />}></Route>
-          <Route path="/mastersPage" element={<MastersPage />}></Route>
+          <Route path="/doughPage" element={<DoughPage />}></Route>
+          <Route path="/creamPage" element={<CreamPage />}></Route>
           <Route path="/processesPage" element={<ProcessesPage />}></Route>
           <Route path="/reportsPage" element={<ReportsPage />}></Route>
         </Routes>

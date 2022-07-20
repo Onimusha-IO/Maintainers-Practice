@@ -15,7 +15,7 @@ const Modal = () => {
   const { modal, setModal } = useContext(UiContext);
 
   const handleModalCrud = async () => {
-    const server = new Crud(`${modal.endPoint}/${modal.table}`);
+    const server = new Crud(`${modal.endPoint}`);
 
     switch (modal.type) {
       case "post":

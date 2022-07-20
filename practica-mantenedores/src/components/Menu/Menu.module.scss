@@ -49,3 +49,14 @@
     }
   }
 }
+
+.subOptions {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-left: 40px;
+    color: #cccccc;
+    font-weight: 600;
+  }
+}

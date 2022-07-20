@@ -26,7 +26,7 @@ const Item = ({ e, table }: any) => {
                   tittle: "Modificar masa",
                   accept: "Modificar",
                   reject: "Cancelar",
-                  endPoint: "/api",
+                  endPoint: "/api/mantainer",
                   table: table,
                   data: { name: e.name, id: e.id },
                 });
@@ -42,7 +42,8 @@ const Item = ({ e, table }: any) => {
                   tittle: "¿Está seguro que desea eliminar el registro?",
                   accept: "Si",
                   reject: "No",
-                  endPoint: "/api/dough",
+                  endPoint: "/api/mantainer",
+                  table: table,
                   data: { name: e.name, id: e.id },
                 });
               }}

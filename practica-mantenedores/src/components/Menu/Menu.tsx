@@ -1,9 +1,4 @@
-import {
-  faHouseChimney,
-  faGear,
-  faCarSide,
-  faFileInvoiceDollar,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHouseChimney, faGear, faCarSide, faFileInvoiceDollar } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
 import classNames from "classnames";
 
@@ -26,21 +21,11 @@ const Menu = () => {
       <MenuOption
         icon={faGear}
         text="Maestros"
-        subOptions={[]}
-        path={"mastersPage"}
+        subOptions={[{ name: "Masas", path: "/doughPage"}, {name: "Cremas", path: "/creamPage"}]}
+        path={""}
       />
-      <MenuOption
-        icon={faCarSide}
-        text="Procesos"
-        subOptions={[]}
-        path={"processesPage"}
-      />
-      <MenuOption
-        icon={faFileInvoiceDollar}
-        text="Reportes"
-        subOptions={[]}
-        path={"reportsPage"}
-      />
+      <MenuOption icon={faCarSide} text="Procesos" subOptions={[]} path={"processesPage"} />
+      <MenuOption icon={faFileInvoiceDollar} text="Reportes" subOptions={[]} path={"reportsPage"} />
     </div>
   );
 };
