@@ -24,7 +24,7 @@ const Extra = () => {
         list.map((e: any) => {
           const key = nanoid();
           if (e.enable) {
-            return <Item e={e} key={key} endpoint={"/api/extra"} />;
+            return <Item e={e} key={key} endPoint={"/api/extra"} />;
           }
         })}
     </div>

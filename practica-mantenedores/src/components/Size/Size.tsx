@@ -24,7 +24,7 @@ const Size = () => {
         list.map((e: any) => {
           const key = nanoid();
           if (e.enable) {
-            return <Item e={e} key={key} endpoint={"/api/size"} />;
+            return <Item e={e} key={key} endPoint={"/api/size"} />;
           }
         })}
     </div>

@@ -13,23 +13,23 @@ const MenuOption = ({ icon, text, subOptions, path }: any) => {
 
   return (
     <>
-      <NavLink to={path}>
-        <div className={styles.option}>
+      <div className={styles.option}>
+        <NavLink to={path}>
           <div className={styles.left}>
             <div className={styles.icon}>
               <FontAwesomeIcon icon={icon} className={styles.faIcon} />
             </div>
             <div className={styles.text}>{text}</div>
           </div>
-          <FontAwesomeIcon
-            icon={faChevronRight}
-            className={styles.faIconSub}
-            onClick={() => {
-              setShow(!show);
-            }}
-          />
-        </div>
-      </NavLink>
+        </NavLink>
+        <FontAwesomeIcon
+          icon={faChevronRight}
+          className={styles.faIconSub}
+          onClick={() => {
+            setShow(!show);
+          }}
+        />
+      </div>
       {show && (
         <div className={styles.subOptions}>
           {subOptions.map((e: any) => {

@@ -16,6 +16,7 @@ const Modal = () => {
 
   const handleModalCrud = async () => {
     const server = new Crud(modal.endPoint);
+    console.log("modal endpoint: ", modal.endPoint);
 
     switch (modal.type) {
       case "post":

@@ -23,7 +23,7 @@ const Cream = () => {
         list.map((e: any) => {
           const key = nanoid();
           if (e.enable) {
-            return <Item e={e} endpoint={"/api/cream"} key={key} />;
+            return <Item e={e} endPoint={"/api/cream"} key={key} />;
           }
         })}
     </div>

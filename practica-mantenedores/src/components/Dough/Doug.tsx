@@ -24,7 +24,7 @@ const Dough = () => {
         list.map((e: any) => {
           const key = nanoid();
           if (e.enable) {
-            return <Item e={e} key={key} endpoint={"/api/dough"} />;
+            return <Item e={e} key={key} endPoint={"/api/dough"} />;
           }
         })}
     </div>

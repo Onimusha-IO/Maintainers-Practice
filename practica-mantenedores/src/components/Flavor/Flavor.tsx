@@ -24,7 +24,7 @@ const Flavor = () => {
         list.map((e: any) => {
           const key = nanoid();
           if (e.enable) {
-            return <Item e={e} key={key} endpoint={"/api/flavor"} />;
+            return <Item e={e} key={key} endPoint={"/api/flavor"} />;
           }
         })}
     </div>
