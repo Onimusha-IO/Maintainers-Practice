@@ -25,8 +25,12 @@ const Menu = () => {
           { name: "Formas", path: "/shapePage" },
           { name: "Masas", path: "/doughPage" },
           { name: "Cremas", path: "/creamPage" },
+          { name: "Extras", path: "/extraPage" },
+          { name: "Rellenos", path: "/fillingPage" },
+          { name: "Tamaños", path: "/sizePage" },
+          { name: "Sabores", path: "/flavorPage" },
         ]}
-        path={""}
+        path={"/mastersPage"}
       />
       <MenuOption icon={faCarSide} text="Procesos" subOptions={[]} path={"processesPage"} />
       <MenuOption icon={faFileInvoiceDollar} text="Reportes" subOptions={[]} path={"reportsPage"} />

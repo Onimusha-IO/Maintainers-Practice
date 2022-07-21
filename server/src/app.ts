@@ -24,6 +24,10 @@ class App {
     this.server.use("/api/dough", routes.DoughRouter);
     this.server.use("/api/cream", routes.CreamRouter);
     this.server.use("/api/shape", routes.ShapeRouter);
+    this.server.use("/api/extra", routes.ExtraRouter);
+    this.server.use("/api/filling", routes.FillingRouter);
+    this.server.use("/api/flavor", routes.FlavorRouter);
+    this.server.use("/api/size", routes.SizeRouter);
   }
 }
 

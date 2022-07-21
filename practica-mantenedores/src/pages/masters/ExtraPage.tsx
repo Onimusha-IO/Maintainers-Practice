@@ -1,7 +1,8 @@
-const ExtraPage = () => {
-  return (
-    <div>ExtraPage</div>
-  )
-}
+import Extra from "../../components/Extra/Extra";
+import Page from "../../components/functional/page/Page";
 
-export default ExtraPage
+const ExtraPage = () => {
+  return <Page tittle={"Extras"} content={<Extra />} message={"Nuevo Extra"} endpoint={"/api/extra"} />;
+};
+
+export default ExtraPage;
