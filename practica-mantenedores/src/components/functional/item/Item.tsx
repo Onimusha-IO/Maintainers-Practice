@@ -7,7 +7,7 @@ import UiContext from "../../../context/ui";
 
 import styles from "./Item.module.scss";
 
-const Item = ({ e, table }: any) => {
+const Item = ({ e, endPoint }: any) => {
   const { setModal } = useContext(UiContext);
 
   return (
@@ -26,8 +26,7 @@ const Item = ({ e, table }: any) => {
                   tittle: "Modificar masa",
                   accept: "Modificar",
                   reject: "Cancelar",
-                  endPoint: "/api/mantainer",
-                  table: table,
+                  endPoint: endPoint,
                   data: { name: e.name, id: e.id },
                 });
               }}
@@ -42,8 +41,7 @@ const Item = ({ e, table }: any) => {
                   tittle: "¿Está seguro que desea eliminar el registro?",
                   accept: "Si",
                   reject: "No",
-                  endPoint: "/api/mantainer",
-                  table: table,
+                  endPoint: endPoint,
                   data: { name: e.name, id: e.id },
                 });
               }}

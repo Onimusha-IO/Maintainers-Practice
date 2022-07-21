@@ -1,4 +1,6 @@
 import UserRouter from "./user";
-import MantainerRouter from "./mantainer";
+import DoughRouter from "./dough";
+import CreamRouter from "./cream";
+import ShapeRouter from "./shape";
 
-export { UserRouter, MantainerRouter };
+export { UserRouter, DoughRouter, CreamRouter, ShapeRouter };

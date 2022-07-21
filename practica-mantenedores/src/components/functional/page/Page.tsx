@@ -8,7 +8,7 @@ import UiContext from "../../../context/ui";
 import styles from "./Page.module.scss";
 import { table } from "console";
 
-const Page = ({ tittle, content, message, table }: any) => {
+const Page = ({ tittle, content, message, endpoint}: any) => {
   const { modal, setModal } = useContext(UiContext);
 
   return (
@@ -25,8 +25,7 @@ const Page = ({ tittle, content, message, table }: any) => {
             tittle: message,
             accept: "Registrar",
             reject: "Cancelar",
-            endPoint: "/api/mantainer",
-            table: table,
+            endPoint: endpoint,
             data: null
           });
         }}

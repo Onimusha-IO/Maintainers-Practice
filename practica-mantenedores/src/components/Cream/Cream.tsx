@@ -9,8 +9,8 @@ const Cream = () => {
   const [list, setList] = useState<[]>();
 
   const getList = async () => {
-    const server = new Crud("/api/mantainer");
-    const res = await server.get("/list", "cream");
+    const server = new Crud("/api/cream");
+    const res = await server.get("/list");
     setList(res?.data);
   };
 
@@ -23,7 +23,7 @@ const Cream = () => {
         list.map((e: any) => {
           const key = nanoid();
           if (e.enable) {
-            return <Item e={e} table={"cream"} key={key} />;
+            return <Item e={e} endpoint={"/api/cream"} key={key} />;
           }
         })}
     </div>

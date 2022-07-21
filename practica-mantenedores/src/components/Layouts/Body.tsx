@@ -3,6 +3,7 @@ import Menu from "../../components/Menu";
 import HomePage from "../../pages/HomePage";
 import CreamPage from "../../pages/masters/CreamPage";
 import DoughPage from "../../pages/masters/DoughPage";
+import ShapePage from "../../pages/masters/ShapePage";
 import MastersPage from "../../pages/MastersPage";
 import ProcessesPage from "../../pages/ProcessesPage";
 import ReportsPage from "../../pages/ReportsPage";
@@ -18,6 +19,7 @@ const Body = () => {
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="*" element={<HomePage />}></Route>
+          <Route path="/shapePage" element={<ShapePage />}></Route>
           <Route path="/doughPage" element={<DoughPage />}></Route>
           <Route path="/creamPage" element={<CreamPage />}></Route>
           <Route path="/processesPage" element={<ProcessesPage />}></Route>

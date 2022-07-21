@@ -1,15 +1,15 @@
-import Crud from "../../client/crud";
-import { nanoid } from "nanoid";
-
 import { useEffect, useState } from "react";
 
+import { nanoid } from "nanoid";
+
+import Crud from "../../client/crud";
 import Item from "../functional/item/Item";
 
-const Dough = () => {
+const Shape = () => {
   const [list, setList] = useState<[]>();
 
   const getList = async () => {
-    const server = new Crud("/api/dough");
+    const server = new Crud("/api/shape");
     const res = await server.get("/list");
     setList(res?.data);
   };
@@ -24,11 +24,11 @@ const Dough = () => {
         list.map((e: any) => {
           const key = nanoid();
           if (e.enable) {
-            return <Item e={e} key={key} endpoint={"/api/dough"} />;
+            return <Item e={e} key={key} endpoint={"/api/shape"} />;
           }
         })}
     </div>
   );
 };
 
-export default Dough;
+export default Shape;

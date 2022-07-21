@@ -1,8 +1,7 @@
-import * as MantainerModel from "../models/mantainer";
+import * as CreamModel from "../models/cream";
 
 const list = async (req: any, res: any) => {
-  // console.log("list controller values: ", req);
-  const result = await MantainerModel.list(req.query);
+  const result = await CreamModel.list(req.query);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -12,7 +11,7 @@ const list = async (req: any, res: any) => {
 };
 
 const add = async (req: any, res: any) => {
-  const result = await MantainerModel.add(req.body);
+  const result = await CreamModel.add(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -22,7 +21,7 @@ const add = async (req: any, res: any) => {
 };
 
 const modify = async (req: any, res: any) => {
-  const result = await MantainerModel.modify(req.body);
+  const result = await CreamModel.modify(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -32,7 +31,7 @@ const modify = async (req: any, res: any) => {
 };
 
 const erase = async (req: any, res: any) => {
-  const result = await MantainerModel.erase(req.body);
+  const result = await CreamModel.erase(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);

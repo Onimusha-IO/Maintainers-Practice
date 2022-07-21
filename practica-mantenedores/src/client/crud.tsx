@@ -8,13 +8,12 @@ class Crud {
     this.route = route;
   }
 
-  get = async (endPoint: string, values: any) => {
+  get = async (endPoint: string) => {
     try {
-      const res = await client.get(`${this.route}/${endPoint}`, { params: { table: values }, headers: config.headers });
+      const res = await client.get(`${this.route}/${endPoint}`, { headers: config.headers });
       if (res.status === 200) {
         return res;
       }
-      console.log("get request: >> ", res);
     } catch (error) {
       console.log("GET request error: ", error);
     }
@@ -27,7 +26,7 @@ class Crud {
         return res;
       }
     } catch (error) {
-      console.log("add error: ", error);
+      console.log("POST request error: ", error);
     }
   };
 
@@ -38,7 +37,7 @@ class Crud {
         return res;
       }
     } catch (error) {
-      console.log("modify error: ", error);
+      console.log("PUT request error: ", error);
     }
   };
 
@@ -49,7 +48,7 @@ class Crud {
         return res;
       }
     } catch (error) {
-      console.log("error erasing: ", error);
+      console.log("DELETE request error: ", error);
     }
   };
 }

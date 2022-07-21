@@ -21,7 +21,11 @@ const Menu = () => {
       <MenuOption
         icon={faGear}
         text="Maestros"
-        subOptions={[{ name: "Masas", path: "/doughPage"}, {name: "Cremas", path: "/creamPage"}]}
+        subOptions={[
+          { name: "Formas", path: "/shapePage" },
+          { name: "Masas", path: "/doughPage" },
+          { name: "Cremas", path: "/creamPage" },
+        ]}
         path={""}
       />
       <MenuOption icon={faCarSide} text="Procesos" subOptions={[]} path={"processesPage"} />
