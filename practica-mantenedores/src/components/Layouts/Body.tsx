@@ -7,7 +7,7 @@ import ExtraPage from "../../pages/masters/ExtraPage";
 import FillingPage from "../../pages/masters/FillingPage";
 import FlavorPage from "../../pages/masters/FlavorPage";
 import ShapePage from "../../pages/masters/ShapePage";
-import SizePage from "../../pages/masters/SizePage";
+import SizePage from "../../pages/masters/size/SizePage";
 import MastersPage from "../../pages/MastersPage";
 import ProcessesPage from "../../pages/ProcessesPage";
 import ReportsPage from "../../pages/ReportsPage";
