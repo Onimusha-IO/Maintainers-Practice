@@ -75,6 +75,8 @@ const SizePage = () => {
                     setId("");
                     setQuantity(0);
                     setNumber("");
+
+                    setType("get");
                   }}
                 />
               </div>
@@ -117,6 +119,7 @@ const SizePage = () => {
                     setId("");
                     setQuantity(0);
                     setNumber("");
+                    setType("get");
                   }}
                 >
                   {reject}
@@ -127,6 +130,7 @@ const SizePage = () => {
                     onClick={() => {
                       handleModalCrud();
 
+                      setType("get");
                       setId("");
                       setQuantity(0);
                       setNumber("");
@@ -178,6 +182,10 @@ const SizePage = () => {
                             setTittle("¿Está seguro que desea eliminar el registro?");
                             setAccept("Si");
                             setReject("No");
+
+                            setId(e.id);
+                            setQuantity(e.quantity);
+                            setNumber(e.number);
                           }}
                         />
                       </div>
@@ -192,7 +200,7 @@ const SizePage = () => {
         className={styles.add}
         onClick={() => {
           setModal(true);
-          setType("get");
+          setType("post");
           setTittle("Nuevo Tamaño");
           setAccept("Registrar");
           setReject("Cancelar");
