@@ -10,9 +10,9 @@ const list = async (values: any) => {
 };
 
 const add = async (values: any) => {
-  const { name } = values;
+  const { quantity, number } = values;
   try {
-    await pool.query("insert into size(name) values($1)", [name]);
+    await pool.query("insert into size(number, quantity) values($1, $2)", [number, quantity]);
     return { succes: true, data: "Size added", error: null };
   } catch (error) {
     return { succes: false, data: null, error: (error as Error).message };
@@ -20,9 +20,9 @@ const add = async (values: any) => {
 };
 
 const modify = async (values: any) => {
-  const { id, name } = values;
+  const { id, quantity, number } = values;
   try {
-    await pool.query("update size set name = $1 where id = $2", [name, id]);
+    await pool.query("update size set quantity = $1 number = $2 where id = $3", [quantity, number, id]);
     return { succes: true, data: "Size modified", error: null };
   } catch (error) {
     return { succes: false, data: null, error: (error as Error).message };

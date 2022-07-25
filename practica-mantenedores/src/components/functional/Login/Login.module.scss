@@ -1,0 +1,107 @@
+.login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .contentLogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 303px;
+    gap: 30px;
+
+    .error {
+      height: 45px;
+      padding: 10px;
+      display: flex;
+      font-weight: 600;
+      align-items: center;
+      position: relative;
+      border-radius: 5px;
+      box-shadow: 0 0 15px 5px #ccc;
+      background-color: #f7a7a3;
+      border-left: 5px solid #860b02;
+    }
+
+    .imgLogo {
+      width: 303px;
+      height: 43px;
+      background-image: url("../../img/Group 178.png");
+    }
+
+    .formLogin {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+
+      .field {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        input {
+          width: 303px;
+          height: 60px;
+          border: 1px solid #cccccc;
+          border-radius: 5px;
+          text-align: center;
+
+          &:focus + label {
+            transform: translateY(-18px) scale(0.9);
+          }
+
+          &:not(:placeholder-shown) + label {
+            transform: translateY(-18px) scale(0.9);
+          }
+        }
+
+        input[type="password"] {
+          letter-spacing: 6px;
+        }
+
+        label {
+          position: absolute;
+          color: #555555;
+          left: 15px;
+          transform-origin: 0%;
+          transition: all 0.4s;
+          pointer-events: none;
+        }
+      }
+    }
+
+    button {
+      width: 250px;
+      height: 40px;
+      background-color: #03495c;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-weight: 600;
+      transition: all 0.4s;
+
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+
+    a {
+      font-weight: 600;
+      transition: all 0.4s;
+
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+
+    .create {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+}

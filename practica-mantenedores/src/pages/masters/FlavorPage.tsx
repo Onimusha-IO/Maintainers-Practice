@@ -1,5 +1,5 @@
-import Flavor from '../../components/Flavor/Flavor';
-import Page from '../../components/functional/page/Page';
+import Flavor from '../../components/Masters/Flavor/Flavor';
+import Page from '../../components/ui/page/Page';
 
 const FlavorPage = () => {
   return <Page tittle={"Sabores"} content={<Flavor />} message={"Nuevo Sabor"} endpoint={"/api/flavor"} />;

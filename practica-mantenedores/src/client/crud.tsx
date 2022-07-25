@@ -1,5 +1,5 @@
 import { config } from "../utils/config";
-import client from "./client";
+import client from "./Client";
 
 class Crud {
   public route: string;

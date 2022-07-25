@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import client from "../../client/client";
+import client from "../../client/Client";
 
 import styles from "./CreateUser.module.scss";
 
