@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import InputText from "../inputText";
+import Item from "../item";
 
 import styles from "./Table.module.scss";
 
@@ -10,7 +10,7 @@ const Table = ({ list }: any) => {
         list.map((e: any) => {
           const key = nanoid();
           if (e.enable) {
-            return <InputText e={e} key={key} />;
+            return <Item e={e} key={key} />;
           }
         })}
     </div>

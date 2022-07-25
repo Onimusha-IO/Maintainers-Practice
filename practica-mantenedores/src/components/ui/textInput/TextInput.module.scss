@@ -1,0 +1,37 @@
+.textInput {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+  margin-left: 30px;
+
+  input {
+    width: 357px;
+    height: 60px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    text-align: center;
+
+    &:focus + label {
+      transform: translateY(-18px) scale(0.9);
+    }
+
+    &:not(:placeholder-shown) + label {
+      transform: translateY(-18px) scale(0.9);
+    }
+  }
+
+  input[type="password"] {
+    letter-spacing: 6px;
+  }
+
+  label {
+    position: absolute;
+    color: #555555;
+    left: 15px;
+    transform-origin: 0%;
+    transition: all 0.4s;
+    pointer-events: none;
+  }
+}

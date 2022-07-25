@@ -7,13 +7,13 @@ import UiContext from "../../../context/ui";
 
 import styles from "./InputText.module.scss";
 
-const InputText = ({ e, endPoint }: any) => {
+const Item = ({ e, endPoint }: any) => {
   const { setModal } = useContext(UiContext);
 
   return (
     <>
       {e && (
-        <div className={styles.dough}>
+        <div className={styles.item}>
           <label>{e.name}</label>
           <div className={styles.controls}>
             <FontAwesomeIcon
@@ -53,4 +53,4 @@ const InputText = ({ e, endPoint }: any) => {
   );
 };
 
-export default InputText;
+export default Item;

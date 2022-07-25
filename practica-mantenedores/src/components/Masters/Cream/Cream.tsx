@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 
 import { useEffect, useState } from "react";
 
-import Item from "../../ui/inputText/InputText";
+import Item from "../../ui/item/Item";
 
 const Cream = () => {
   const [list, setList] = useState<[]>();

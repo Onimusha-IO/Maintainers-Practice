@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 
 import Crud from "../../../client/Crud";
-import Item from "../../ui/inputText/InputText";
+import Item from "../../ui/item/Item";
 
 const Shape = () => {
   const [list, setList] = useState<[]>();

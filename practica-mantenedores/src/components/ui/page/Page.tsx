@@ -1,33 +1,32 @@
-import { useContext, useEffect } from "react";
+import { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
-import Modal from "../Modal";
-import UiContext from "../../../context/ui";
 
 import styles from "./Page.module.scss";
-import { table } from "console";
+import Modal from "../myModal";
+import TextInput from "../textInput";
 
-const Page = ({ tittle, content, message, endpoint}: any) => {
-  const { modal, setModal } = useContext(UiContext);
+const Page = ({ tittle, children, message, endpoint }: any) => {
+  const [modal, setModal] = useState(false);
 
   return (
     <div className={styles.page}>
       <label className={styles.label}>{tittle}</label>
-      <div className={styles.content}>{modal.state ? <Modal /> : content}</div>
+      <div className={styles.content}>
+        {modal ? (
+          <Modal setModal={setModal} modal={modal} tittle={"Nueva Masa"}>
+            <TextInput type={"text"} name={"Id"} disabled={true} />
+            <TextInput type={"text"} name={"Nombre"} />
+          </Modal>
+        ) : (
+          children
+        )}
+      </div>
       <div
         className={styles.add}
         onClick={() => {
-          setModal({
-            ...modal,
-            state: true,
-            type: "post",
-            tittle: message,
-            accept: "Registrar",
-            reject: "Cancelar",
-            endPoint: endpoint,
-            data: null
-          });
+          setModal(true);
         }}
       >
         <FontAwesomeIcon icon={faCirclePlus} className={styles.icon} />
