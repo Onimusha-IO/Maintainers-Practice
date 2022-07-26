@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 import { useState } from "react";
-import styles from "./TextInput.module.scss";
+import styles from "./Input.module.scss";
 
 const TextInput = ({ type, name, text, disabled = false }: any) => {
   const [value, setValue] = useState(text ? text : "");

@@ -5,19 +5,24 @@ import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./Page.module.scss";
 import Modal from "../myModal";
-import TextInput from "../textInput";
+import Dialog from "../../Masters/Dough/Dialog";
 
 const Page = ({ tittle, children, message, endpoint }: any) => {
-  const [modal, setModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const onClose = () => {
+    // actualizar listado
+    console.log("Test...");
+    setShowModal(false);
+  };
 
   return (
     <div className={styles.page}>
       <label className={styles.label}>{tittle}</label>
       <div className={styles.content}>
-        {modal ? (
-          <Modal setModal={setModal} modal={modal} tittle={"Nueva Masa"}>
-            <TextInput type={"text"} name={"Id"} disabled={true} />
-            <TextInput type={"text"} name={"Nombre"} />
+        {showModal ? (
+          <Modal onClose={onClose} showModal={showModal} tittle={"Nueva Masa"}>
+            <Dialog onClose={onClose} />
           </Modal>
         ) : (
           children
@@ -26,7 +31,7 @@ const Page = ({ tittle, children, message, endpoint }: any) => {
       <div
         className={styles.add}
         onClick={() => {
-          setModal(true);
+          setShowModal(true);
         }}
       >
         <FontAwesomeIcon icon={faCirclePlus} className={styles.icon} />

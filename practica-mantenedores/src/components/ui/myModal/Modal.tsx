@@ -1,11 +1,18 @@
 import Window from "./Window";
 
 import styles from "./Modal.module.scss";
+import { useEffect, useState } from "react";
 
-const Modal = ({ setModal, modal, tittle, children }: any) => {
+const Modal = ({ onClose, showModal, tittle, children }: any) => {
+  const [isShowModal, setIsShowModal] = useState(showModal);
+
+  useEffect(() => {
+    setIsShowModal(showModal);
+  }, [showModal]);
+
   return (
-    <div className={modal ? styles.modal : styles.none}>
-      <Window setModal={setModal} tittle={tittle}>
+    <div className={isShowModal ? styles.modal : styles.none}>
+      <Window tittle={tittle} onClose={onClose}>
         {children}
       </Window>
     </div>

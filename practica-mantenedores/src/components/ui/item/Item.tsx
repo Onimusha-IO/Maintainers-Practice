@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import UiContext from "../../../context/ui";
 
-import styles from "./InputText.module.scss";
+import styles from "./Item.module.scss";
 
 const Item = ({ e, endPoint }: any) => {
   const { setModal } = useContext(UiContext);
