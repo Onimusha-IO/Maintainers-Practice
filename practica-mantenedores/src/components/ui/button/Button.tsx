@@ -1,8 +1,8 @@
 import styles from "./Button.module.scss";
 
-const Button = ({ text, onClick }: any) => {
+const Button = ({ text, onClick, disabled }: any) => {
   return (
-    <div className={styles.button} onClick={onClick}>
+    <div className={disabled ? styles.buttonOff : styles.button} onClick={onClick}>
       {text}
     </div>
   );
