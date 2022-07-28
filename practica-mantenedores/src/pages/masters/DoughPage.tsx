@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
+
+import { useSelector, useDispatch } from "react-redux";
+import { getDoughList } from "../../store/slices/MastersSlice";
+
 import Dough from "../../components/Masters/Dough";
 import Page from "../../components/ui/page/Page";
 
 import Crud from "../../client/Crud";
+import axios from "axios";
+import { config } from "../../utils/config";
 
 const DoughPage = () => {
   const [list, setList] = useState<[]>();
@@ -25,8 +31,22 @@ const DoughPage = () => {
     setShowModal(false);
   };
 
+  const [storeList, setStoreList] = useState([]);
+
+  const doughList = useSelector((state: any) => {
+    return state.mastersReducer.list;
+  });
+
+  const dispatch = useDispatch();
+
+  const doughStoreList = async () => {
+    const res = await axios.get(`${config.url}/api/dough/list`, { headers: config.headers });
+    dispatch(getDoughList(res.data));
+  };
+
   useEffect(() => {
     getList();
+    doughStoreList();
   }, []);
   return (
     <Page
@@ -44,7 +64,7 @@ const DoughPage = () => {
       setName={setName}
       name={name}
     >
-      <Dough list={list} setAction={setAction} action={action} setShowModal={setShowModal} setId={setId} setName={setName}/>
+      <Dough list={doughList} setAction={setAction} action={action} setShowModal={setShowModal} setId={setId} setName={setName} />
     </Page>
   );
 };

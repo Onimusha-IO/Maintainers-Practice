@@ -1,13 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import { UiProvider } from "./context/ui";
+import { Provider } from "react-redux";
+import { store } from "./store/Store";
 import MainPage from "./Pages/MainPage";
+import { UiProvider } from "./context/ui";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <UiProvider>
-      <MainPage />
-    </UiProvider>
+    <Provider store={store}>
+      <UiProvider>
+        <MainPage />
+      </UiProvider>
+    </Provider>
   </React.StrictMode>
 );
