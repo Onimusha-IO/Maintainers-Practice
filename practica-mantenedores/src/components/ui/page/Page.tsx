@@ -1,12 +1,9 @@
-import { useState } from "react";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./Page.module.scss";
 import Modal from "../myModal";
 import Dialog from "../../Masters/Dough/Dialog";
-import Crud from "../../../client/Crud";
 
 const Page = ({
   tittle,
@@ -21,26 +18,17 @@ const Page = ({
   id,
   setName,
   name,
+  message,
+  setTitle,
 }: any) => {
-  const [list, setList] = useState<[]>();
-
-  // const getList = async () => {
-  //   const server = new Crud(`/api/dough`);
-  //   const res = await server.get("/list");
-  //   setList(res?.data);
-  // };
-
-  // const onClose = () => {
-  //   getList();
-  //   setShowModal(false);
-  // };
+const createTitle = "Nueva Masa";
 
   return (
     <div className={styles.page}>
       <label className={styles.label}>{tittle}</label>
       <div className={styles.content}>{children}</div>
-      <Modal onClose={onClose} showModal={showModal} tittle={"Nueva Masa"}>
-        <Dialog onClose={onClose} action={action} getList={getList} setId={setId} id={id} setName={setName} name={name} />
+      <Modal onClose={onClose} showModal={showModal} tittle={message}>
+        <Dialog onClose={onClose} action={action} getList={getList} setId={setId} id={id} setName={setName} name={name} setTitle={setTitle}/>
       </Modal>
       <div
         className={styles.add}
@@ -48,6 +36,7 @@ const Page = ({
           setAction("post");
           setId("");
           setName("");
+          setTitle(createTitle);
           setShowModal(true);
         }}
       >

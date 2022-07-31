@@ -1,8 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
-import mastersReducer from "./slices/MastersSlice";
+import doughSlice from "./slices/masters/doughSlice";
+import creamSlice from "./slices/masters/creamSlice";
+import extraSlice from "./slices/masters/extraSlice";
+import fillingSlice from "./slices/masters/fillingSlice";
+import flavorSlice from "./slices/masters/flavorSlice";
+import shapeSlice from "./slices/masters/shapeSlice";
+import sizeSlice from "./slices/masters/sizeSlice";
 
 export const store = configureStore({
   reducer: {
-    mastersReducer,
+    doughSlice,
+    creamSlice,
+    extraSlice,
+    fillingSlice,
+    flavorSlice,
+    shapeSlice,
+    sizeSlice,
   },
 });

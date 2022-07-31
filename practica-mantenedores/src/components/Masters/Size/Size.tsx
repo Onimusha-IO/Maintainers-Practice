@@ -3,7 +3,12 @@ import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleXmark, faCirclePlus, faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleXmark,
+  faCirclePlus,
+  faPencil,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 
 import Crud from "../../../client/Crud";
 
@@ -48,11 +53,18 @@ const SizePage = () => {
         break;
     }
 
-    setModal(false)
+    setModal(false);
+  };
+
+  const getList = async () => {
+    const server = new Crud(`/api/size`);
+    const res = await server.get("/list");
+    setList(res?.data);
   };
 
   useEffect(() => {
     handleModalCrud();
+    getList();
   }, []);
 
   // return <Page tittle={"Tamaños"} content={<Size />} message={"Nuevo Tamaño"} endpoint={"/api/size"} />;
@@ -77,12 +89,19 @@ const SizePage = () => {
                     setNumber("");
 
                     setType("get");
+                    getList();
                   }}
                 />
               </div>
               <div className={styles.formLogin}>
                 <div className={styles.field}>
-                  <input id="inputId" value={id} type="text" placeholder=" " disabled />
+                  <input
+                    id="inputId"
+                    value={id}
+                    type="text"
+                    placeholder=" "
+                    disabled
+                  />
                   <label htmlFor="inputId">Id</label>
                 </div>
                 <div className={styles.field}>
@@ -120,6 +139,7 @@ const SizePage = () => {
                     setQuantity(0);
                     setNumber("");
                     setType("get");
+                    getList();
                   }}
                 >
                   {reject}
@@ -134,6 +154,7 @@ const SizePage = () => {
                       setQuantity(0);
                       setNumber("");
                       setType("get");
+                      getList();
                     }}
                   >
                     {accept}
@@ -171,6 +192,7 @@ const SizePage = () => {
                             setId(e.id);
                             setQuantity(e.quantity);
                             setNumber(e.number);
+                            getList();
                           }}
                         />
                         <FontAwesomeIcon
@@ -179,13 +201,16 @@ const SizePage = () => {
                           onClick={() => {
                             setModal(true);
                             setType("delete");
-                            setTittle("¿Está seguro que desea eliminar el registro?");
+                            setTittle(
+                              "¿Está seguro que desea eliminar el registro?"
+                            );
                             setAccept("Si");
                             setReject("No");
 
                             setId(e.id);
                             setQuantity(e.quantity);
                             setNumber(e.number);
+                            getList();
                           }}
                         />
                       </div>
@@ -204,6 +229,7 @@ const SizePage = () => {
           setTittle("Nuevo Tamaño");
           setAccept("Registrar");
           setReject("Cancelar");
+          getList();
         }}
       >
         <FontAwesomeIcon icon={faCirclePlus} className={styles.icon} />

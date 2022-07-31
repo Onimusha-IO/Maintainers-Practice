@@ -1,15 +1,18 @@
-import { useContext } from "react";
-
 import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import UiContext from "../../../context/ui";
-
 import styles from "./Item.module.scss";
 
-const Item = ({ e, endPoint, setAction, setShowModal, setId, setName }: any) => {
-  const { setModal } = useContext(UiContext);
-
+const Item = ({
+  e,
+  setAction,
+  setShowModal,
+  setId,
+  setName,
+  setTitle,
+  puttitle,
+  deleteTitle,
+}: any) => {
   return (
     <>
       {e && (
@@ -32,6 +35,7 @@ const Item = ({ e, endPoint, setAction, setShowModal, setId, setName }: any) => 
                 setAction("put");
                 setId(e.id);
                 setName(e.name);
+                setTitle(puttitle);
                 setShowModal(true);
               }}
             />
@@ -49,6 +53,7 @@ const Item = ({ e, endPoint, setAction, setShowModal, setId, setName }: any) => 
                 //   data: { name: e.name, id: e.id },
                 // });
                 setAction("delete");
+                setTitle(deleteTitle);
                 setId(e.id);
                 setName(e.name);
                 setShowModal(true);

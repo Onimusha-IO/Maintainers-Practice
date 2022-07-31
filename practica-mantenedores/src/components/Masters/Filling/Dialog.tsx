@@ -4,7 +4,7 @@ import Button from "../../ui/button";
 import Input from "../../ui/input";
 import Crud from "../../../client/Crud";
 
-import styles from "./Dough.module.scss";
+import styles from "./Filling.module.scss";
 
 const Dialog = ({
   onClose,
@@ -16,12 +16,12 @@ const Dialog = ({
   setName,
   name,
 }: any) => {
-  const dough = useSelector((state: any) => {
-    return state.doughSlice.dough;
+  const filling = useSelector((state: any) => {
+    return state.fillingSlice.filling;
   });
 
   const handleModalCrud = async (action: any) => {
-    const server = new Crud("/api/dough");
+    const server = new Crud("/api/filling");
 
     switch (action) {
       case "get":
@@ -29,13 +29,13 @@ const Dialog = ({
         setList(res?.data);
         break;
       case "post":
-        await server.post("/add", dough);
+        await server.post("/add", filling);
         break;
       case "put":
-        await server.put("/modify", dough);
+        await server.put("/modify", filling);
         break;
       case "delete":
-        await server.delete("/erase", dough);
+        await server.delete("/erase", filling);
         break;
       default:
         console.log("Crud operation not valid");

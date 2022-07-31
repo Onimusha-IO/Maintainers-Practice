@@ -1,8 +1,7 @@
-import Flavor from '../../components/Masters/Flavor/Flavor';
-import Page from '../../components/ui/page/Page';
+import Flavor from "../../components/Masters/Flavor/Flavor";
 
 const FlavorPage = () => {
-  return <Page tittle={"Sabores"} content={<Flavor />} message={"Nuevo Sabor"} endpoint={"/api/flavor"} />;
-}
+  return <Flavor />;
+};
 
-export default FlavorPage
+export default FlavorPage;

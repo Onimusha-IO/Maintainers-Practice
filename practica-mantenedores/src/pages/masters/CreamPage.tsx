@@ -1,8 +1,7 @@
-import Cream from "../../components/Masters/Cream/Cream";
-import Page from "../../components/ui/page/Page";
+import Cream from "../../components/Masters/Cream";
 
 const CreamPage = () => {
-  return <Page tittle={"Cremas"} content={<Cream />} message={"Nueva Crema"} endpoint={"/api/cream"} />;
+  return <Cream />;
 };
 
 export default CreamPage;
