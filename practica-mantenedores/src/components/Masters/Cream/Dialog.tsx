@@ -5,6 +5,7 @@ import Input from "../../ui/input";
 import Crud from "../../../client/Crud";
 
 import styles from "./Cream.module.scss";
+import { useEffect, useState } from "react";
 
 const Dialog = ({
   onClose,
@@ -15,7 +16,11 @@ const Dialog = ({
   id,
   setName,
   name,
+  labels,
 }: any) => {
+  const [accept, setAccept] = useState("");
+  const [reject, setReject] = useState("");
+
   const cream = useSelector((state: any) => {
     return state.creamSlice.cream;
   });
@@ -45,6 +50,26 @@ const Dialog = ({
     onClose();
   };
 
+  useEffect(() => {
+    switch (action) {
+      case "post":
+        setAccept(labels.buttons.create.accept);
+        setReject(labels.buttons.create.reject);
+        break;
+      case "put":
+        setAccept(labels.buttons.modify.accept);
+        setReject(labels.buttons.modify.reject);
+        break;
+      case "delete":
+        setAccept(labels.buttons.delete.accept);
+        setReject(labels.buttons.delete.reject);
+        break;
+
+      default:
+        break;
+    }
+  }, [action]);
+
   return (
     <div className={styles.dialog}>
       <div className={styles.form}>
@@ -55,11 +80,11 @@ const Dialog = ({
           getValue={setId}
           text={id}
         />
-        <Input type={"text"} name={"Nombre"} getValue={setName} text={name} />
+        <Input type={"text"} name={"Nombre"} getValue={setName} text={name} autoFocus={true} />
       </div>
       <div className={styles.options}>
         <Button
-          text={"Cancelar"}
+          text={reject}
           onClick={() => {
             setId("");
             setName("");
@@ -68,7 +93,7 @@ const Dialog = ({
           }}
         />
         <Button
-          text={"Agregar"}
+          text={accept}
           onClick={() => {
             setId("");
             setName("");

@@ -21,7 +21,7 @@ const Body = () => {
       <Menu />
       <Content>
         <Routes>
-          <Route index element={<HomePage />}></Route>
+          <Route path="/homePage" element={<HomePage />}></Route>
           <Route path="masters">
             <Route path="shapePage" element={<ShapePage />}></Route>
             <Route path="doughPage" element={<DoughPage />}></Route>

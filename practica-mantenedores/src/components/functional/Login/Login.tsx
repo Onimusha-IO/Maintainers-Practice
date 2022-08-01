@@ -11,6 +11,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
+  const [text, setText] = useState("");
 
   const loginRequest = async (email: any, password: any) => {
     const server = new Crud("/api/user");
@@ -21,9 +22,11 @@ const Login = () => {
         console.log("success: >>", res);
         setUserValidated(true);
         setError(false);
+      } else {
+        setError(true);
+        setText("Credenciales invalidas");
       }
     } catch (error) {
-      setError(true);
       console.log("axios error: ", error);
     }
   };
@@ -33,7 +36,7 @@ const Login = () => {
   return (
     <div className={styles.login}>
       <div className={styles.contentLogin}>
-        {error ? <div className={styles.error}>Invalid credentials</div> : null}
+        {error ? <div className={styles.error}>{text}</div> : null}
         <div className={styles.imgLogo}></div>
         <div className={styles.formLogin}>
           <div className={styles.field}>
@@ -64,7 +67,12 @@ const Login = () => {
         <button
           type="submit"
           onClick={() => {
-            loginRequest(email, password);
+            if (email !== "" && password !== "") {
+              loginRequest(email, password);
+            } else {
+              setText("Todos los campos son requeridos");
+              setError(true);
+            }
           }}
         >
           Ingresar

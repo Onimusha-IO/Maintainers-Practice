@@ -10,8 +10,7 @@ const Table = ({
   setId,
   setName,
   setTitle,
-  puttitle,
-  deleteTitle,
+  labels,
 }: any) => {
   return (
     <div className={styles.table}>
@@ -28,8 +27,7 @@ const Table = ({
                 setId={setId}
                 setName={setName}
                 setTitle={setTitle}
-                puttitle={puttitle}
-                deleteTitle={deleteTitle}
+                labels={labels}
               />
             );
           }

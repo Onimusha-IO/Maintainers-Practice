@@ -41,21 +41,32 @@ const Cream = () => {
     dispatch(setCream({ name, id }));
   }, [name, id]);
 
-  const createTitle = "Nueva Crema";
-  const puttitle = "Modificar Crema";
-  const deleteTitle = "¿Está seguro que desea eliminar el registro?";
+  const labels = {
+    title: {
+      create: "Nueva Crema",
+      modify: "Modificar Crema",
+      delete: "¿Está seguro que desea eliminar el registro?",
+    },
+    buttons: {
+      create: {
+        accept: "Agregar",
+        reject: "Cancelar",
+      },
+      modify: {
+        accept: "Modificar",
+        reject: "Cancelar",
+      },
+      delete: {
+        accept: "Si",
+        reject: "No",
+      },
+    },
+  };
 
   return (
     <div className={styles.page}>
       <label className={styles.label}>Cremas</label>
       <div className={styles.content}>
-        {/* {creamList &&
-          creamList.map((e: any) => {
-            const key = nanoid();
-            if (e.enable) {
-              return <Item e={e} endPoint={"/api/cream"} key={key} />;
-            }
-          })} */}
         <List
           list={creamList}
           setAction={setAction}
@@ -63,8 +74,7 @@ const Cream = () => {
           setId={setId}
           setName={setName}
           setTitle={setModalTitle}
-          puttitle={puttitle}
-          deleteTitle={deleteTitle}
+          labels={labels}
         />
       </div>
       <Modal onClose={onClose} showModal={showModal} tittle={modalTitle}>
@@ -76,7 +86,7 @@ const Cream = () => {
           id={id}
           setName={setName}
           name={name}
-          setTitle={setModalTitle}
+          labels={labels}
         />
       </Modal>
       <div
@@ -85,7 +95,7 @@ const Cream = () => {
           setAction("post");
           setId("");
           setName("");
-          setModalTitle(createTitle);
+          setModalTitle(labels.title.create);
           setShowModal(true);
         }}
       >

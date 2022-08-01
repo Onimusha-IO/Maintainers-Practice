@@ -46,7 +46,36 @@
 
     .faIconSub {
       color: #cccccc;
+      transition: all 0.2s ease-in-out;
     }
+
+    .faIconSubPush {
+      color: #cccccc;
+      transform: rotate(90deg);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}
+.option:hover {
+  // background-color: rgba(95, 95, 95, 0.9);
+
+  .left {
+    .icon {
+      .faIcon {
+        color: goldenrod;
+      }
+    }
+    .text {
+      color: goldenrod;
+    }
+  }
+
+  .faIconSub {
+    color: goldenrod;
+  }
+
+  .faIconSubPush {
+    color: goldenrod;
   }
 }
 
@@ -59,4 +88,12 @@
     color: #cccccc;
     font-weight: 600;
   }
+
+  label:hover {
+    color: goldenrod;
+  }
+}
+
+.navLink{
+  text-decoration: none;
 }

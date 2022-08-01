@@ -2,9 +2,23 @@ import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
 import styles from "./Input.module.scss";
 
-const TextInput = ({ type, name, text, disabled = false, getValue }: any) => {
-
+const TextInput = ({
+  type,
+  name,
+  text,
+  disabled = false,
+  getValue,
+  autoFocus = false,
+}: any) => {
   const id = nanoid();
+
+  const [focus, setFocus] = useState(false);
+
+  useEffect(() => {
+    if (autoFocus) {
+      setFocus(true);
+    }
+  }, []);
 
   return (
     <div className={styles.textInput}>
@@ -14,6 +28,7 @@ const TextInput = ({ type, name, text, disabled = false, getValue }: any) => {
         type={type}
         placeholder=" "
         disabled={disabled}
+        autoFocus={focus}
         onChange={(e) => {
           getValue(e.target.value);
         }}

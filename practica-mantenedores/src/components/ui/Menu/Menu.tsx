@@ -17,7 +17,7 @@ const Menu = () => {
 
   return (
     <div className={classNameMenu(showMenu)}>
-      <MenuOption icon={faHouseChimney} text="Inicio" path={"/"} />
+      <MenuOption icon={faHouseChimney} text="Inicio" path={"/homePage"} />
       <MenuOption
         icon={faGear}
         text="Maestros"
@@ -30,7 +30,7 @@ const Menu = () => {
           { name: "Tamaños", path: "/masters/sizePage" },
           { name: "Sabores", path: "/masters/flavorPage" },
         ]}
-        path={"/mastersPage"}
+        path={""}
       />
       <MenuOption icon={faCarSide} text="Procesos" subOptions={[]} path={"processesPage"} />
       <MenuOption icon={faFileInvoiceDollar} text="Reportes" subOptions={[]} path={"reportsPage"} />

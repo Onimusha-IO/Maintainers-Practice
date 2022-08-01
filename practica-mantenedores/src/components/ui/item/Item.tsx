@@ -10,8 +10,7 @@ const Item = ({
   setId,
   setName,
   setTitle,
-  puttitle,
-  deleteTitle,
+  labels,
 }: any) => {
   return (
     <>
@@ -23,19 +22,10 @@ const Item = ({
               icon={faPencil}
               className={styles.icon}
               onClick={() => {
-                // setModal({
-                //   state: true,
-                //   type: "put",
-                //   tittle: "Modificar masa",
-                //   accept: "Modificar",
-                //   reject: "Cancelar",
-                //   endPoint: endPoint,
-                //   data: { name: e.name, id: e.id },
-                // });
                 setAction("put");
                 setId(e.id);
                 setName(e.name);
-                setTitle(puttitle);
+                setTitle(labels.title.modify);
                 setShowModal(true);
               }}
             />
@@ -43,17 +33,8 @@ const Item = ({
               icon={faTrash}
               className={styles.icon}
               onClick={() => {
-                // setModal({
-                //   state: true,
-                //   type: "delete",
-                //   tittle: "¿Está seguro que desea eliminar el registro?",
-                //   accept: "Si",
-                //   reject: "No",
-                //   endPoint: endPoint,
-                //   data: { name: e.name, id: e.id },
-                // });
                 setAction("delete");
-                setTitle(deleteTitle);
+                setTitle(labels.title.delete);
                 setId(e.id);
                 setName(e.name);
                 setShowModal(true);
