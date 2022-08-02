@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
 import Crud from "../../../client";
-import { getShapeList, setShape } from "../../../store/slices/masters/shapeSlice";
+import { getShapeList, setShape } from "../../../redux/slices/masters/shapeSlice";
 import Modal from "../../ui/myModal";
 
 import styles from "./Shape.module.scss";

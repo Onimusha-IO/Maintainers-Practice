@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
 import Crud from "../../../client";
-import { getCreamList, setCream } from "../../../store/slices/masters/creamSlice";
+import { getCreamList, setCream } from "../../../redux/slices/masters/creamSlice";
 import Modal from "../../ui/myModal";
 
 import styles from "./Cream.module.scss";

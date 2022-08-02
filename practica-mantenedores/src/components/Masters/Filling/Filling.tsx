@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
 import Crud from "../../../client";
-import { getFillingList, setFilling } from "../../../store/slices/masters/fillingSlice";
+import { getFillingList, setFilling } from "../../../redux/slices/masters/fillingSlice";
 import Modal from "../../ui/myModal";
 
 import styles from "./Filling.module.scss";

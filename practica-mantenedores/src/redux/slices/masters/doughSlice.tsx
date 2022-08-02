@@ -1,20 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  list: [],
+  dough: {
+    name: "",
+    id: "",
+  },
+};
+
 export const doughSlice = createSlice({
   name: "dough",
-  initialState: {
-    doughList: [],
-    dough: {
-      name: "",
-      id: "",
-    },
-  },
+  initialState,
   reducers: {
     getDoughList: (state, action) => {
-      state.doughList = action.payload;
+      state.list = action.payload;
     },
     setDough: (state, action) => {
       state.dough = action.payload;
+    },
+    resetDough: (state) => {
+      state.dough = initialState.dough;
     },
   },
 });

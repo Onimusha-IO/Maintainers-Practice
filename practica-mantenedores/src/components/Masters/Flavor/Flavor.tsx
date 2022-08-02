@@ -8,7 +8,7 @@ import Crud from "../../../client";
 import {
   getFlavorList,
   setFlavor,
-} from "../../../store/slices/masters/flavorSlice";
+} from "../../../redux/slices/masters/flavorSlice";
 import Modal from "../../ui/myModal";
 
 import styles from "./Flavor.module.scss";

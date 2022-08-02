@@ -1,20 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  list: [],
+  extra: {
+    name: "",
+    id: "",
+  },
+};
+
 export const extraSlice = createSlice({
   name: "extra",
-  initialState: {
-    extraList: [],
-    extra: {
-      name: "",
-      id: "",
-    },
-  },
+  initialState,
   reducers: {
     getExtraList: (state, action) => {
-      state.extraList = action.payload;
+      state.list = action.payload;
     },
     setExtra: (state, action) => {
       state.extra = action.payload;
+    },
+    resetExtra: (state) => {
+      state.extra = initialState.extra;
     },
   },
 });

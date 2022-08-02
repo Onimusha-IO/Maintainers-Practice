@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { getDoughList, setDough } from "../../store/slices/masters/doughSlice";
+import { getDoughList, setDough } from "../../redux/slices/masters/doughSlice";
 
 import Dough from "../../components/Masters/Dough";
 import Page from "../../components/ui/page/Page";

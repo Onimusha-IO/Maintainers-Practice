@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
 import Crud from "../../../client";
-import { getExtraList, setExtra } from "../../../store/slices/masters/extraSlice";
+import { getExtraList, setExtra } from "../../../redux/slices/masters/extraSlice";
 import Modal from "../../ui/myModal";
 
 import styles from "./Extra.module.scss";

@@ -1,20 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  list: [],
+  shape: {
+    name: "",
+    id: "",
+  },
+};
+
 export const shapeSlice = createSlice({
   name: "masters",
-  initialState: {
-    shapeList: [],
-    shape: {
-      name: "",
-      id: "",
-    },
-  },
+  initialState,
   reducers: {
     getShapeList: (state, action) => {
-      state.shapeList = action.payload;
+      state.list = action.payload;
     },
     setShape: (state, action) => {
       state.shape = action.payload;
+    },
+    resetShape: (state) => {
+      state.shape = initialState.shape;
     },
   },
 });

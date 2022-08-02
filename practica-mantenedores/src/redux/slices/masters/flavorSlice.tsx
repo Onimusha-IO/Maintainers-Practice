@@ -1,20 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  list: [],
+  flavor: {
+    name: "",
+    id: "",
+  },
+};
+
 export const flavorSlice = createSlice({
   name: "flavor",
-  initialState: {
-    flavorList: [],
-    flavor: {
-      name: "",
-      id: "",
-    },
-  },
+  initialState,
   reducers: {
     getFlavorList: (state, action) => {
-      state.flavorList = action.payload;
+      state.list = action.payload;
     },
     setFlavor: (state, action) => {
       state.flavor = action.payload;
+    },
+    resetFlavor: (state) => {
+      state.flavor = initialState.flavor;
     },
   },
 });

@@ -1,20 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  list: [],
+  size: {
+    name: "",
+    id: "",
+  },
+};
+
 export const sizeSlice = createSlice({
   name: "masters",
-  initialState: {
-    sizeList: [],
-    size: {
-      name: "",
-      id: "",
-    },
-  },
+  initialState,
   reducers: {
     getSizeList: (state, action) => {
-      state.sizeList = action.payload;
+      state.list = action.payload;
     },
     setsize: (state, action) => {
       state.size = action.payload;
+    },
+    resetSize: (state) => {
+      state.size = initialState.size;
     },
   },
 });

@@ -1,20 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  list: [],
+  filling: {
+    name: "",
+    id: "",
+  },
+};
+
 export const fillingSlice = createSlice({
   name: "filling",
-  initialState: {
-    fillingList: [],
-    filling: {
-      name: "",
-      id: "",
-    },
-  },
+  initialState,
   reducers: {
     getFillingList: (state, action) => {
-      state.fillingList = action.payload;
+      state.filling = action.payload;
     },
     setFilling: (state, action) => {
       state.filling = action.payload;
+    },
+    resetFilling: (state) => {
+      state.filling = initialState.filling;
     },
   },
 });
