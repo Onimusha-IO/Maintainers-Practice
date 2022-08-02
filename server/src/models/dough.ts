@@ -1,15 +1,15 @@
 import pool from "../utils/database";
 
-const list = async (values: any) => {
+const listDough = async (values: any) => {
   try {
-    const res = await pool.query("select * from dough");
+    const res = await pool.query("select * from dough where enable = true");
     return { succes: true, data: res.rows, error: null };
   } catch (error) {
     return { succes: false, data: null, error: (error as Error).message };
   }
 };
 
-const add = async (values: any) => {
+const createDough = async (values: any) => {
   const { name } = values;
   try {
     await pool.query("insert into dough(name) values($1)", [name]);
@@ -19,7 +19,7 @@ const add = async (values: any) => {
   }
 };
 
-const modify = async (values: any) => {
+const updateDough = async (values: any) => {
   const { id, name } = values;
   try {
     await pool.query("update dough set name = $1 where id = $2", [name, id]);
@@ -29,7 +29,7 @@ const modify = async (values: any) => {
   }
 };
 
-const erase = async (values: any) => {
+const deleteDough = async (values: any) => {
   const { id } = values;
   try {
     await pool.query("update dough set enable = false where id = $1", [id]);
@@ -39,4 +39,4 @@ const erase = async (values: any) => {
   }
 };
 
-export { list, add, modify, erase };
+export { listDough, createDough, updateDough, deleteDough };

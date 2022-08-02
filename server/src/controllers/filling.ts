@@ -1,7 +1,7 @@
 import * as FillingModel from "../models/filling";
 
-const list = async (req: any, res: any) => {
-  const result = await FillingModel.list(req.query);
+const listFilling = async (req: any, res: any) => {
+  const result = await FillingModel.listFilling(req.query);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -10,8 +10,8 @@ const list = async (req: any, res: any) => {
   }
 };
 
-const add = async (req: any, res: any) => {
-  const result = await FillingModel.add(req.body);
+const createFilling = async (req: any, res: any) => {
+  const result = await FillingModel.createFilling(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -20,8 +20,8 @@ const add = async (req: any, res: any) => {
   }
 };
 
-const modify = async (req: any, res: any) => {
-  const result = await FillingModel.modify(req.body);
+const updateFilling = async (req: any, res: any) => {
+  const result = await FillingModel.updateFilling(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -30,8 +30,8 @@ const modify = async (req: any, res: any) => {
   }
 };
 
-const erase = async (req: any, res: any) => {
-  const result = await FillingModel.erase(req.body);
+const deleteFilling = async (req: any, res: any) => {
+  const result = await FillingModel.deleteFilling(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -40,4 +40,4 @@ const erase = async (req: any, res: any) => {
   }
 };
 
-export { list, add, modify, erase };
+export { listFilling, createFilling, updateFilling, deleteFilling };

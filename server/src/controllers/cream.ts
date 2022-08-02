@@ -1,7 +1,7 @@
 import * as CreamModel from "../models/cream";
 
-const list = async (req: any, res: any) => {
-  const result = await CreamModel.list(req.query);
+const listCream = async (req: any, res: any) => {
+  const result = await CreamModel.listCream(req.query);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -10,8 +10,8 @@ const list = async (req: any, res: any) => {
   }
 };
 
-const add = async (req: any, res: any) => {
-  const result = await CreamModel.add(req.body);
+const createCream = async (req: any, res: any) => {
+  const result = await CreamModel.createCream(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -20,8 +20,8 @@ const add = async (req: any, res: any) => {
   }
 };
 
-const modify = async (req: any, res: any) => {
-  const result = await CreamModel.modify(req.body);
+const updateCream = async (req: any, res: any) => {
+  const result = await CreamModel.updateCream(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -30,8 +30,8 @@ const modify = async (req: any, res: any) => {
   }
 };
 
-const erase = async (req: any, res: any) => {
-  const result = await CreamModel.erase(req.body);
+const deleteCream = async (req: any, res: any) => {
+  const result = await CreamModel.deleteCream(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -40,4 +40,4 @@ const erase = async (req: any, res: any) => {
   }
 };
 
-export { list, add, modify, erase };
+export { listCream, createCream, updateCream, deleteCream };

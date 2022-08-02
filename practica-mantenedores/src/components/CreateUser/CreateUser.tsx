@@ -2,35 +2,29 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import client from "../../client/Client";
+import { config } from "../../utils/config";
 
 import styles from "./CreateUser.module.scss";
 
 const CreateUser = () => {
   const [name, setName] = useState("");
   const [rut, setRut] = useState("");
-  const [paterno, setPaterno] = useState("");
-  const [materno, setMaterno] = useState("");
+  const [paternalLastName, setPaternalLastName] = useState("");
+  const [maternalLastName, setMaternalLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [repetirEmail, setRepetirEmail] = useState("");
-  const [repetirPassword, setRepetirPassword] = useState("");
+  const [confirmEmail, setConfirmEmail] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
   const navigate = useNavigate();
 
-  const config = {
-    headers: {
-      "Content-type": "application/json",
-      "x-api-key": 123456,
-    },
-  };
-
   const createRequest = async (
     name: any,
     rut: any,
-    paterno: any,
-    materno: any,
+    paternalLastName: any,
+    maternalLastName: any,
     email: any,
     password: any,
     config: any
@@ -38,8 +32,8 @@ const CreateUser = () => {
     try {
       const create = await client.post(
         "/api/user/create",
-        { name, rut, email, paterno, materno },
-        config
+        { name, rut, email, paternalLastName, maternalLastName },
+        { headers: config.headers }
       );
 
       if (create.status === 201) {
@@ -96,20 +90,20 @@ const CreateUser = () => {
           <input
             id="aPaterno"
             type="text"
-            value={paterno}
+            value={paternalLastName}
             placeholder=" "
             onChange={(e) => {
-              setPaterno(e.target.value);
+              setPaternalLastName(e.target.value);
             }}
           />
           <label htmlFor="aMaterno">Apellido Materno</label>
           <input
             id="aMaterno"
             type="text"
-            value={materno}
+            value={maternalLastName}
             placeholder=" "
             onChange={(e) => {
-              setMaterno(e.target.value);
+              setMaternalLastName(e.target.value);
             }}
           />
           <label htmlFor="inputEmail">Correo electrónico</label>
@@ -126,10 +120,10 @@ const CreateUser = () => {
           <input
             id="inputRepeatEmail"
             type="email"
-            value={repetirEmail}
+            value={confirmEmail}
             placeholder=" "
             onChange={(e) => {
-              setRepetirEmail(e.target.value);
+              setConfirmEmail(e.target.value);
             }}
           />
         </div>
@@ -148,10 +142,10 @@ const CreateUser = () => {
           <input
             id="inputRepeatPassword"
             type="password"
-            value={repetirPassword}
+            value={confirmPassword}
             placeholder=" "
             onChange={(e) => {
-              setRepetirPassword(e.target.value);
+              setConfirmPassword(e.target.value);
             }}
           />
         </div>
@@ -162,20 +156,20 @@ const CreateUser = () => {
           if (
             name !== "" &&
             rut !== "" &&
-            paterno !== "" &&
-            materno !== "" &&
+            paternalLastName !== "" &&
+            maternalLastName !== "" &&
             email !== "" &&
-            repetirEmail !== "" &&
+            confirmEmail !== "" &&
             password !== "" &&
-            repetirPassword !== ""
+            confirmPassword !== ""
           ) {
-            if (email === repetirEmail && password === repetirPassword) {
+            if (email === confirmEmail && password === confirmPassword) {
               setError(false);
               createRequest(
                 name,
                 rut,
-                paterno,
-                materno,
+                paternalLastName,
+                maternalLastName,
                 email,
                 password,
                 config

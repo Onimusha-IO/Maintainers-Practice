@@ -1,8 +1,8 @@
 import * as DoughModel from "../models/dough";
 
-const list = async (req: any, res: any) => {
-  // console.log("list controller values: ", req);
-  const result = await DoughModel.list(req.query);
+const listDough = async (req: any, res: any) => {
+  // console.log("listDough controller values: ", req);
+  const result = await DoughModel.listDough(req.query);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -11,8 +11,8 @@ const list = async (req: any, res: any) => {
   }
 };
 
-const add = async (req: any, res: any) => {
-  const result = await DoughModel.add(req.body);
+const createDough = async (req: any, res: any) => {
+  const result = await DoughModel.createDough(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -21,8 +21,8 @@ const add = async (req: any, res: any) => {
   }
 };
 
-const modify = async (req: any, res: any) => {
-  const result = await DoughModel.modify(req.body);
+const updateDough = async (req: any, res: any) => {
+  const result = await DoughModel.updateDough(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -31,8 +31,8 @@ const modify = async (req: any, res: any) => {
   }
 };
 
-const erase = async (req: any, res: any) => {
-  const result = await DoughModel.erase(req.body);
+const deleteDough = async (req: any, res: any) => {
+  const result = await DoughModel.deleteDough(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -41,4 +41,4 @@ const erase = async (req: any, res: any) => {
   }
 };
 
-export { list, add, modify, erase };
+export { listDough, createDough, updateDough, deleteDough };

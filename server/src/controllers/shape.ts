@@ -1,8 +1,8 @@
 import * as ShapeModel from "../models/shape";
 
-const list = async (req: any, res: any) => {
+const listShape = async (req: any, res: any) => {
   // console.log("list controller values: ", req);
-  const result = await ShapeModel.list(req.query);
+  const result = await ShapeModel.listShape(req.query);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -11,8 +11,8 @@ const list = async (req: any, res: any) => {
   }
 };
 
-const add = async (req: any, res: any) => {
-  const result = await ShapeModel.add(req.body);
+const createShape = async (req: any, res: any) => {
+  const result = await ShapeModel.createShape(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -21,8 +21,8 @@ const add = async (req: any, res: any) => {
   }
 };
 
-const modify = async (req: any, res: any) => {
-  const result = await ShapeModel.modify(req.body);
+const updataShape = async (req: any, res: any) => {
+  const result = await ShapeModel.updataShape(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -31,8 +31,8 @@ const modify = async (req: any, res: any) => {
   }
 };
 
-const erase = async (req: any, res: any) => {
-  const result = await ShapeModel.erase(req.body);
+const deleteShape = async (req: any, res: any) => {
+  const result = await ShapeModel.deleteShape(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -41,4 +41,4 @@ const erase = async (req: any, res: any) => {
   }
 };
 
-export { list, add, modify, erase };
+export { listShape, createShape, updataShape, deleteShape };

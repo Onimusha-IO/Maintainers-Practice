@@ -5,9 +5,9 @@ import * as ShapeController from "../controllers/shape";
 
 const ShapeRouter = Router();
 
-ShapeRouter.get("/list", auth, ShapeController.list);
-ShapeRouter.post("/add", auth, ShapeController.add);
-ShapeRouter.put("/modify", auth, ShapeController.modify);
-ShapeRouter.delete("/erase", auth, ShapeController.erase);
+ShapeRouter.get("/list", auth, ShapeController.listShape);
+ShapeRouter.post("/create", auth, ShapeController.createShape);
+ShapeRouter.put("/update", auth, ShapeController.updataShape);
+ShapeRouter.delete("/delete", auth, ShapeController.deleteShape);
 
 export default ShapeRouter;

@@ -29,13 +29,13 @@ const Dialog = ({
         setList(res?.data);
         break;
       case "post":
-        await server.post("/add", shape);
+        await server.post("/create", shape);
         break;
       case "put":
-        await server.put("/modify", shape);
+        await server.put("/update", shape);
         break;
       case "delete":
-        await server.delete("/erase", shape);
+        await server.delete("/delete", shape);
         break;
       default:
         console.log("Crud operation not valid");

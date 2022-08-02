@@ -1,7 +1,7 @@
 import * as SizeModel from "../models/size";
 
-const list = async (req: any, res: any) => {
-  const result = await SizeModel.list(req.query);
+const listSize = async (req: any, res: any) => {
+  const result = await SizeModel.listSize(req.query);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -10,8 +10,8 @@ const list = async (req: any, res: any) => {
   }
 };
 
-const add = async (req: any, res: any) => {
-  const result = await SizeModel.add(req.body);
+const createSize = async (req: any, res: any) => {
+  const result = await SizeModel.createSize(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -20,8 +20,8 @@ const add = async (req: any, res: any) => {
   }
 };
 
-const modify = async (req: any, res: any) => {
-  const result = await SizeModel.modify(req.body);
+const updateSize = async (req: any, res: any) => {
+  const result = await SizeModel.updateSize(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -30,8 +30,8 @@ const modify = async (req: any, res: any) => {
   }
 };
 
-const erase = async (req: any, res: any) => {
-  const result = await SizeModel.erase(req.body);
+const deleteSize = async (req: any, res: any) => {
+  const result = await SizeModel.deleteSize(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -40,4 +40,4 @@ const erase = async (req: any, res: any) => {
   }
 };
 
-export { list, add, modify, erase };
+export { listSize, createSize, updateSize, deleteSize };

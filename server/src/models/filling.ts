@@ -1,15 +1,15 @@
 import pool from "../utils/database";
 
-const list = async (values: any) => {
+const listFilling = async (values: any) => {
   try {
-    const res = await pool.query("select * from filling");
+    const res = await pool.query("select * from filling where enable = true");
     return { succes: true, data: res.rows, error: null };
   } catch (error) {
     return { succes: false, data: null, error: (error as Error).message };
   }
 };
 
-const add = async (values: any) => {
+const createFilling = async (values: any) => {
   const { name } = values;
   try {
     await pool.query("insert into filling(name) values($1)", [name]);
@@ -19,7 +19,7 @@ const add = async (values: any) => {
   }
 };
 
-const modify = async (values: any) => {
+const updateFilling = async (values: any) => {
   const { id, name } = values;
   try {
     await pool.query("update filling set name = $1 where id = $2", [name, id]);
@@ -29,7 +29,7 @@ const modify = async (values: any) => {
   }
 };
 
-const erase = async (values: any) => {
+const deleteFilling = async (values: any) => {
   const { id } = values;
   try {
     await pool.query("update filling set enable = false where id = $1", [id]);
@@ -39,4 +39,4 @@ const erase = async (values: any) => {
   }
 };
 
-export { list, add, modify, erase };
+export { listFilling, createFilling, updateFilling, deleteFilling };

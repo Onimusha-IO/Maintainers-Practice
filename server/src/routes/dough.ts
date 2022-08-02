@@ -5,9 +5,9 @@ import * as DoughController from "../controllers/dough";
 
 const DoughRouter = Router();
 
-DoughRouter.get("/list", auth, DoughController.list);
-DoughRouter.post("/add", auth, DoughController.add);
-DoughRouter.put("/modify", auth, DoughController.modify);
-DoughRouter.delete("/erase", auth, DoughController.erase);
+DoughRouter.get("/list", auth, DoughController.listDough);
+DoughRouter.post("/create", auth, DoughController.createDough);
+DoughRouter.put("/update", auth, DoughController.updateDough);
+DoughRouter.delete("/delete", auth, DoughController.deleteDough);
 
 export default DoughRouter;

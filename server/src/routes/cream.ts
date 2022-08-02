@@ -5,9 +5,9 @@ import * as CreamController from "../controllers/cream";
 
 const CreamRouter = Router();
 
-CreamRouter.get("/list", auth, CreamController.list);
-CreamRouter.post("/add", auth, CreamController.add);
-CreamRouter.put("/modify", auth, CreamController.modify);
-CreamRouter.delete("/erase", auth, CreamController.erase);
+CreamRouter.get("/list", auth, CreamController.listCream);
+CreamRouter.post("/create", auth, CreamController.createCream);
+CreamRouter.put("/update", auth, CreamController.updateCream);
+CreamRouter.delete("/delete", auth, CreamController.deleteCream);
 
 export default CreamRouter;

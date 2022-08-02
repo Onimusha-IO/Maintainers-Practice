@@ -1,35 +1,42 @@
 import pool from "../utils/database";
 
-const list = async (values: any) => {
+const listSize = async (values: any) => {
   try {
-    const res = await pool.query("select * from size");
+    const res = await pool.query("select * from size where enable = true");
     return { succes: true, data: res.rows, error: null };
   } catch (error) {
     return { succes: false, data: null, error: (error as Error).message };
   }
 };
 
-const add = async (values: any) => {
+const createSize = async (values: any) => {
   const { quantity, number } = values;
   try {
-    await pool.query("insert into size(number, quantity) values($1, $2)", [number, quantity]);
+    await pool.query("insert into size(number, quantity) values($1, $2)", [
+      number,
+      quantity,
+    ]);
     return { succes: true, data: "Size added", error: null };
   } catch (error) {
     return { succes: false, data: null, error: (error as Error).message };
   }
 };
 
-const modify = async (values: any) => {
+const updateSize = async (values: any) => {
   const { id, quantity, number } = values;
   try {
-    await pool.query("update size set quantity = $1 number = $2 where id = $3", [quantity, number, id]);
+    await pool.query("update size set quantity = $1 number = $2 where id = $3", [
+      quantity,
+      number,
+      id,
+    ]);
     return { succes: true, data: "Size modified", error: null };
   } catch (error) {
     return { succes: false, data: null, error: (error as Error).message };
   }
 };
 
-const erase = async (values: any) => {
+const deleteSize = async (values: any) => {
   const { id } = values;
   try {
     await pool.query("update size set enable = false where id = $1", [id]);
@@ -39,4 +46,4 @@ const erase = async (values: any) => {
   }
 };
 
-export { list, add, modify, erase };
+export { listSize, createSize, updateSize, deleteSize };

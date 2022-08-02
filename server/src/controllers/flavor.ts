@@ -1,7 +1,7 @@
 import * as FlavorModel from "../models/flavor";
 
-const list = async (req: any, res: any) => {
-  const result = await FlavorModel.list(req.query);
+const listFlavor = async (req: any, res: any) => {
+  const result = await FlavorModel.listFlavor(req.query);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -10,8 +10,8 @@ const list = async (req: any, res: any) => {
   }
 };
 
-const add = async (req: any, res: any) => {
-  const result = await FlavorModel.add(req.body);
+const createFlavor = async (req: any, res: any) => {
+  const result = await FlavorModel.createFlavor(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -20,8 +20,8 @@ const add = async (req: any, res: any) => {
   }
 };
 
-const modify = async (req: any, res: any) => {
-  const result = await FlavorModel.modify(req.body);
+const updateFlavor = async (req: any, res: any) => {
+  const result = await FlavorModel.updateFlavor(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -30,8 +30,8 @@ const modify = async (req: any, res: any) => {
   }
 };
 
-const erase = async (req: any, res: any) => {
-  const result = await FlavorModel.erase(req.body);
+const deleteFlavor = async (req: any, res: any) => {
+  const result = await FlavorModel.deleteFlavor(req.body);
 
   if (result.succes) {
     return res.status(200).json(result.data);
@@ -40,4 +40,4 @@ const erase = async (req: any, res: any) => {
   }
 };
 
-export { list, add, modify, erase };
+export { listFlavor, createFlavor, updateFlavor, deleteFlavor };
