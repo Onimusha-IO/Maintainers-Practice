@@ -12,8 +12,10 @@ const listCream = async (values: any) => {
 const createCream = async (values: any) => {
   const { name } = values;
   try {
-    await pool.query("insert into cream(name) values($1)", [name]);
-    return { succes: true, data: "Cream added", error: null };
+    const res = await pool.query("insert into cream(name) values($1) returning *", [
+      name,
+    ]);
+    return { succes: true, data: res.rows[0], error: null };
   } catch (error) {
     return { succes: false, data: null, error: (error as Error).message };
   }
@@ -22,8 +24,11 @@ const createCream = async (values: any) => {
 const updateCream = async (values: any) => {
   const { id, name } = values;
   try {
-    await pool.query("update cream set name = $1 where id = $2", [name, id]);
-    return { succes: true, data: "Cream modified", error: null };
+    const res = await pool.query(
+      "update cream set name = $1 where id = $2 returning *",
+      [name, id]
+    );
+    return { succes: true, data: res.rows[0], error: null };
   } catch (error) {
     return { succes: false, data: null, error: (error as Error).message };
   }
@@ -33,7 +38,7 @@ const deleteCream = async (values: any) => {
   const { id } = values;
   try {
     await pool.query("update cream set enable = false where id = $1", [id]);
-    return { succes: true, data: "Cream erased", error: null };
+    return { succes: true, data: "Cream deleted", error: null };
   } catch (error) {
     return { succes: false, data: null, error: (error as Error).message };
   }
