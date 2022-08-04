@@ -34,6 +34,7 @@ const Menu = () => {
           { name: "Rellenos", path: "/masters/fillingPage" },
           { name: "Tamaños", path: "/masters/sizePage" },
           { name: "Sabores", path: "/masters/flavorPage" },
+          { name: "Tortas", path: "/masters/cakePage" },
         ]}
         path={""}
       />
