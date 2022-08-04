@@ -30,7 +30,6 @@ const Cream = () => {
 
   useEffect(() => {
     listCream(dispatch);
-    console.log(creamList);
   }, []);
 
   const labels = {

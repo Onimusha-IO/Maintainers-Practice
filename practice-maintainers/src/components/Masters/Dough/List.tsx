@@ -7,8 +7,7 @@ const List = ({
   setId,
   setName,
   setTitle,
-  puttitle,
-  deleteTitle,
+labels
 }: any) => {
   return (
     <>
@@ -20,9 +19,7 @@ const List = ({
           setId={setId}
           setName={setName}
           setTitle={setTitle}
-          puttitle={puttitle}
-          deleteTitle={deleteTitle}
-        />
+          labels={labels}          />
       )}
     </>
   );

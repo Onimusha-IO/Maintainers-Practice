@@ -1,49 +1,58 @@
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 
 import Button from "../../ui/button";
 import Input from "../../ui/input";
-import Crud from "../../../client/Crud";
 
 import styles from "./Dough.module.scss";
+import {
+  createDough,
+  deleteDough,
+  updateDough,
+} from "../../../redux/slices/masters/doughSlice";
 
-const Dialog = ({
-  onClose,
-  action,
-  setList,
-  getList,
-  setId,
-  id,
-  setName,
-  name,
-}: any) => {
-  const dough = useSelector((state: any) => {
-    return state.doughSlice.dough;
-  });
+const Dialog = ({ onClose, action, setId, id, setName, name, labels }: any) => {
+  const [accept, setAccept] = useState("");
+  const [reject, setReject] = useState("");
 
-  const handleModalCrud = async (action: any) => {
-    const server = new Crud("/api/dough");
+  const dispatch = useDispatch();
 
+  const handleModalCrud = (action: any) => {
     switch (action) {
-      case "get":
-        const res = await server.get("/list");
-        setList(res?.data);
-        break;
       case "post":
-        await server.post("/add", dough);
+        createDough(dispatch, { name });
         break;
       case "put":
-        await server.put("/modify", dough);
+        updateDough(dispatch, { id, name });
         break;
       case "delete":
-        await server.delete("/erase", dough);
+        deleteDough(dispatch, { id });
         break;
+
       default:
-        console.log("Crud operation not valid");
         break;
     }
-
-    onClose();
   };
+
+  useEffect(() => {
+    switch (action) {
+      case "post":
+        setAccept(labels.buttons.create.accept);
+        setReject(labels.buttons.create.reject);
+        break;
+      case "put":
+        setAccept(labels.buttons.modify.accept);
+        setReject(labels.buttons.modify.reject);
+        break;
+      case "delete":
+        setAccept(labels.buttons.delete.accept);
+        setReject(labels.buttons.delete.reject);
+        break;
+
+      default:
+        break;
+    }
+  }, [action]);
 
   return (
     <div className={styles.dialog}>
@@ -55,25 +64,30 @@ const Dialog = ({
           getValue={setId}
           text={id}
         />
-        <Input type={"text"} name={"Nombre"} getValue={setName} text={name} />
+        <Input
+          type={"text"}
+          name={"Nombre"}
+          getValue={setName}
+          text={name}
+          autoFocus={true}
+        />
       </div>
       <div className={styles.options}>
         <Button
-          text={"Cancelar"}
+          text={reject}
           onClick={() => {
             setId("");
             setName("");
             onClose();
-            getList();
           }}
         />
         <Button
-          text={"Agregar"}
+          text={accept}
           onClick={() => {
             setId("");
             setName("");
             handleModalCrud(action);
-            getList();
+            onClose();
           }}
           disabled={name === "" ? true : false}
         />
