@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { nanoid } from "nanoid";
 
@@ -10,66 +11,113 @@ import {
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 
-import Crud from "../../../client/Crud";
+import { useContext } from "react";
+import UiContext from "../../../context/ui";
 
 import styles from "./Size.module.scss";
+import {
+  listSize,
+  createSize,
+  deleteSize,
+  updateSize,
+} from "../../../redux/slices/masters/sizeSlice";
 
 const SizePage = () => {
-  // modal controls text
+  // modal control
   const [modal, setModal] = useState(false);
   const [accept, setAccept] = useState("");
   const [reject, setReject] = useState("");
   const [tittle, setTittle] = useState("");
 
-  // inputs
-  const [id, setId] = useState("");
-  const [quantity, setQuantity] = useState(0);
-  const [number, setNumber] = useState("");
-
   // crud type
   const [type, setType] = useState("get");
 
-  const [list, setList] = useState<[]>();
+  // inputs
+  const [id, setId] = useState("");
+  const [quantity, setQuantity] = useState(1);
+  const [number, setNumber] = useState("");
 
-  const handleModalCrud = async () => {
-    const server = new Crud("/api/size");
+  const dispatch = useDispatch();
 
-    switch (type) {
-      case "get":
-        const res = await server.get("/list");
-        setList(res?.data);
-        break;
+  const sizeList = useSelector((state: any) => {
+    return state.sizeSlice.list;
+  });
+
+  const handleModalCrud = (action: any) => {
+    switch (action) {
       case "post":
-        await server.post("/add", { id, quantity, number });
+        createSize(dispatch, { number, quantity });
         break;
       case "put":
-        await server.put("/modify", { id, quantity, number });
+        updateSize(dispatch, { id, number, quantity });
         break;
       case "delete":
-        await server.delete("/erase", { id });
+        deleteSize(dispatch, { id });
         break;
+
       default:
-        console.log("Crud operation not valid");
         break;
     }
 
-    setModal(false);
+    listSize(dispatch);
   };
 
-  const getList = async () => {
-    const server = new Crud(`/api/size`);
-    const res = await server.get("/list");
-    setList(res?.data);
+  const labels = {
+    title: {
+      create: "Nuevo Tamaño",
+      modify: "Modificar Tamaño",
+      delete: "¿Está seguro que desea eliminar el registro?",
+    },
+    buttons: {
+      create: {
+        accept: "Agregar",
+        reject: "Cancelar",
+      },
+      modify: {
+        accept: "Modificar",
+        reject: "Cancelar",
+      },
+      delete: {
+        accept: "Si",
+        reject: "No",
+      },
+    },
   };
 
   useEffect(() => {
-    handleModalCrud();
-    getList();
-  }, []);
+    switch (type) {
+      case "post":
+        setTittle(labels.title.create);
+        setAccept(labels.buttons.create.accept);
+        setReject(labels.buttons.create.reject);
+        break;
+      case "put":
+        setTittle(labels.title.modify);
+        setAccept(labels.buttons.modify.accept);
+        setReject(labels.buttons.modify.reject);
+        break;
+      case "delete":
+        setTittle(labels.title.delete);
+        setAccept(labels.buttons.delete.accept);
+        setReject(labels.buttons.delete.reject);
+        break;
 
-  // return <Page tittle={"Tamaños"} content={<Size />} message={"Nuevo Tamaño"} endpoint={"/api/size"} />;
+      default:
+        break;
+    }
+
+    listSize(dispatch);
+  }, [type]);
+
+  const { setShowMenu } = useContext(UiContext);
+
   return (
-    <div className={styles.page}>
+    <div
+      className={styles.page}
+      onClick={() => {
+        setShowMenu(false);
+      }}
+    >
       <label className={styles.label}>Tamaños</label>
       <div className={styles.content}>
         {modal ? (
@@ -85,11 +133,8 @@ const SizePage = () => {
                     setModal(false);
 
                     setId("");
-                    setQuantity(0);
-                    setNumber("");
-
-                    setType("get");
-                    getList();
+                    setQuantity(1);
+                    setNumber("1");
                   }}
                 />
               </div>
@@ -107,7 +152,10 @@ const SizePage = () => {
                 <div className={styles.field}>
                   <input
                     id="inputQuantity"
-                    type="text"
+                    type="number"
+                    min="1"
+                    max="150"
+                    step="1"
                     value={quantity}
                     placeholder=" "
                     onChange={(e) => {
@@ -119,7 +167,10 @@ const SizePage = () => {
                 <div className={styles.field}>
                   <input
                     id="inputNumber"
-                    type="text"
+                    type="number"
+                    min="1"
+                    max="100"
+                    step="1"
                     value={number}
                     placeholder=" "
                     onChange={(e) => {
@@ -133,13 +184,11 @@ const SizePage = () => {
                 <div
                   className={styles.buttons}
                   onClick={() => {
-                    setModal(false);
-
                     setId("");
-                    setQuantity(0);
-                    setNumber("");
-                    setType("get");
-                    getList();
+                    setQuantity(1);
+                    setNumber("1");
+
+                    setModal(false);
                   }}
                 >
                   {reject}
@@ -148,13 +197,13 @@ const SizePage = () => {
                   <button
                     className={styles.buttons}
                     onClick={() => {
-                      handleModalCrud();
-
                       setId("");
-                      setQuantity(0);
-                      setNumber("");
-                      setType("get");
-                      getList();
+                      setQuantity(1);
+                      setNumber("1");
+
+                      handleModalCrud(type);
+
+                      setModal(false);
                     }}
                   >
                     {accept}
@@ -169,8 +218,8 @@ const SizePage = () => {
           </div>
         ) : (
           <div>
-            {list &&
-              list.map((e: any) => {
+            {sizeList &&
+              sizeList.map((e: any) => {
                 const key = nanoid();
                 if (e.enable) {
                   return (
@@ -183,34 +232,26 @@ const SizePage = () => {
                           icon={faPencil}
                           className={styles.icon}
                           onClick={() => {
-                            setModal(true);
                             setType("put");
-                            setTittle("Modificar Tamaño");
-                            setAccept("Modificar");
-                            setReject("Cancelar");
 
                             setId(e.id);
                             setQuantity(e.quantity);
                             setNumber(e.number);
-                            getList();
+
+                            setModal(true);
                           }}
                         />
                         <FontAwesomeIcon
                           icon={faTrash}
                           className={styles.icon}
                           onClick={() => {
-                            setModal(true);
                             setType("delete");
-                            setTittle(
-                              "¿Está seguro que desea eliminar el registro?"
-                            );
-                            setAccept("Si");
-                            setReject("No");
 
                             setId(e.id);
                             setQuantity(e.quantity);
                             setNumber(e.number);
-                            getList();
+
+                            setModal(true);
                           }}
                         />
                       </div>
@@ -224,12 +265,8 @@ const SizePage = () => {
       <div
         className={styles.add}
         onClick={() => {
-          setModal(true);
           setType("post");
-          setTittle("Nuevo Tamaño");
-          setAccept("Registrar");
-          setReject("Cancelar");
-          getList();
+          setModal(true);
         }}
       >
         <FontAwesomeIcon icon={faCirclePlus} className={styles.icon} />

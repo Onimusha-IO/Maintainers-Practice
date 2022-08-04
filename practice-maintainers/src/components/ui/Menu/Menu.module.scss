@@ -8,6 +8,7 @@
   padding: 30px 20px;
   background-color: rgba(0, 0, 0, 0.7);
   transition: left 0.4s;
+  z-index: 1000;
   gap: 21px;
 
   &.show {
@@ -94,6 +95,6 @@
   }
 }
 
-.navLink{
+.navLink {
   text-decoration: none;
 }

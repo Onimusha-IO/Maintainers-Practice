@@ -25,7 +25,7 @@ const createSize = async (values: any) => {
 const updateSize = async (values: any) => {
   const { id, quantity, number } = values;
   try {
-    await pool.query("update size set quantity = $1 number = $2 where id = $3", [
+    await pool.query("update size set quantity = $1, number = $2 where id = $3", [
       quantity,
       number,
       id,

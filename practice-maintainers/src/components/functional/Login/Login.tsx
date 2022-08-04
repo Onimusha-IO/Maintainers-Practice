@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import UiContext from "../../../context/ui";
 
-import Crud from "../../../client/Crud";
 import client from "../../../client/Client";
 
 import styles from "./Login.module.scss";
@@ -16,7 +15,6 @@ const Login = () => {
   const [text, setText] = useState("");
 
   const loginRequest = async (email: any, password: any) => {
-    // const server = new Crud("/api/user");
     try {
       const res = await client.post(
         "/api/user/validate",
@@ -28,12 +26,11 @@ const Login = () => {
         console.log("success: >>", res);
         setUserValidated(true);
         setError(false);
-      } else {
-        setError(true);
-        setText("Credenciales invalidas");
       }
     } catch (error) {
-      console.log("axios error: ", error);
+      console.log("login axios error: ", error);
+      setError(true);
+      setText("Credenciales invalidas");
     }
   };
 

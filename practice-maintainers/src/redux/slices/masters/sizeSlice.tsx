@@ -6,7 +6,8 @@ import { config } from "../../../utils/config";
 const initialState = {
   list: [],
   size: {
-    name: "",
+    number: 0,
+    quantity: 0,
     id: "",
   },
 };
