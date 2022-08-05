@@ -29,11 +29,12 @@ const Menu = () => {
         subOptions={[
           { name: "Formas", path: "/masters/shapePage" },
           { name: "Masas", path: "/masters/doughPage" },
-          { name: "Cremas", path: "/masters/creamPage" },
-          { name: "Extras", path: "/masters/extraPage" },
-          { name: "Rellenos", path: "/masters/fillingPage" },
-          { name: "Tamaños", path: "/masters/sizePage" },
           { name: "Sabores", path: "/masters/flavorPage" },
+          { name: "Tamaños", path: "/masters/sizePage" },
+          { name: "Cremas", path: "/masters/creamPage" },
+          { name: "Rellenos", path: "/masters/fillingPage" },
+          { name: "Extras", path: "/masters/extraPage" },
+          { name: "Sets", path: "/masters/setPage" },
           { name: "Tortas", path: "/masters/cakePage" },
         ]}
         path={""}

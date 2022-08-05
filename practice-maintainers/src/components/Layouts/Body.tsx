@@ -15,6 +15,7 @@ import Content from "../Layouts/Content";
 
 import styles from "./Layouts.module.scss";
 import CakePage from "../../Pages/Masters/CakePage";
+import SetPage from "../../Pages/Masters/SetPage";
 
 const Body = () => {
   return (
@@ -32,6 +33,7 @@ const Body = () => {
             <Route path="flavorPage" element={<FlavorPage />}></Route>
             <Route path="sizePage" element={<SizePage />}></Route>
             <Route path="cakePage" element={<CakePage />}></Route>
+            <Route path="setPage" element={<SetPage />}></Route>
             <Route path="*" element={<Error />} />
           </Route>
           <Route path="processesPage" element={<ProcessesPage />}></Route>

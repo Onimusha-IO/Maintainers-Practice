@@ -6,6 +6,7 @@ import { config } from "../../../utils/config";
 const initialState = {
   list: [],
   cake: [],
+  combination: ["", "", "", "", "", "", ""],
 };
 
 export const cakeSlice = createSlice({
@@ -18,13 +19,25 @@ export const cakeSlice = createSlice({
     setCake: (state, action) => {
       state.cake = action.payload;
     },
+    setCombination: (state, action) => {
+      state.combination[action.payload.index] = action.payload.value;
+    },
     resetCake: (state) => {
       state.cake = initialState.cake;
+    },
+    resetCombination: (state) => {
+      state.combination = initialState.combination;
     },
   },
 });
 
-export const { getOptionList, setCake, resetCake } = cakeSlice.actions;
+export const {
+  getOptionList,
+  setCake,
+  setCombination,
+  resetCake,
+  resetCombination,
+} = cakeSlice.actions;
 
 export default cakeSlice.reducer;
 

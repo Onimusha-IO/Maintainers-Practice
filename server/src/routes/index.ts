@@ -7,6 +7,7 @@ import FillingRouter from "./filling";
 import FlavorRouter from "./flavor";
 import SizeRouter from "./size";
 import OptionRouter from "./option";
+import SetRouter from "./set";
 
 export {
   UserRouter,
@@ -18,4 +19,5 @@ export {
   FlavorRouter,
   SizeRouter,
   OptionRouter,
+  SetRouter,
 };

@@ -29,6 +29,7 @@ class App {
     this.server.use("/api/flavor", routes.FlavorRouter);
     this.server.use("/api/size", routes.SizeRouter);
     this.server.use("/api/option", routes.OptionRouter);
+    this.server.use("/api/set", routes.SetRouter);
   }
 }
 

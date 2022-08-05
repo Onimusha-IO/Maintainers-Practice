@@ -16,6 +16,7 @@ const Cake = () => {
   const { setShowMenu } = useContext(UiContext);
 
   const options = useSelector((state: any) => {
+    console.log("cake slice: ", state.cakeSlice);
     return state.cakeSlice.list;
   });
 
@@ -47,7 +48,14 @@ const Cake = () => {
         {tables &&
           tables.map((e: any, i: any) => {
             const key = nanoid();
-            return <ComboBox label={e} options={options[i]} key={key} />;
+            return (
+              <ComboBox
+                label={e}
+                options={options.length > 0 ? options[i] : []}
+                index={i}
+                key={key}
+              />
+            );
           })}
       </div>
       <div className={styles.add} onClick={() => {}}>

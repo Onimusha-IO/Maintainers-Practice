@@ -7,6 +7,7 @@ import flavorSlice from "../slices/masters/flavorSlice";
 import shapeSlice from "../slices/masters/shapeSlice";
 import sizeSlice from "../slices/masters/sizeSlice";
 import cakeSlice from "../slices/masters/cakeSlice";
+import setSlice from "../slices/masters/setSlice";
 
 export const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ export const store = configureStore({
     shapeSlice,
     sizeSlice,
     cakeSlice,
+    setSlice,
   },
 });
 
