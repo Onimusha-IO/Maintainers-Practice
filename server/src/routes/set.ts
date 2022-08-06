@@ -5,6 +5,8 @@ import * as SetController from "../controllers/set";
 
 const SetRouter = Router();
 
-SetRouter.get("/list", auth, SetController.listOptionSet);
+SetRouter.get("/optionList", auth, SetController.listOptionSet);
+SetRouter.get("/list", auth, SetController.listSet);
+SetRouter.get("/create", auth, SetController.createSet);
 
 export default SetRouter;

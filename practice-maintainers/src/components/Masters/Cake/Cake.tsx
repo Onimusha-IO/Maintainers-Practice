@@ -11,6 +11,7 @@ import ComboBox from "./ComboBox";
 import { listOption } from "../../../redux/slices/masters/cakeSlice";
 
 import styles from "./Cake.module.scss";
+import { Alert } from "@mui/material";
 
 const Cake = () => {
   const { setShowMenu } = useContext(UiContext);
@@ -18,6 +19,11 @@ const Cake = () => {
   const options = useSelector((state: any) => {
     console.log("cake slice: ", state.cakeSlice);
     return state.cakeSlice.list;
+  });
+
+  const path = useSelector((state: any) => {
+    console.log("set slice: ", state.setSlice);
+    return state.setSlice.path;
   });
 
   const dispatch = useDispatch();
@@ -45,7 +51,7 @@ const Cake = () => {
     >
       <label className={styles.label}>Tortas</label>
       <div className={styles.content}>
-        {tables &&
+        {path.length > 0 ? (
           tables.map((e: any, i: any) => {
             const key = nanoid();
             return (
@@ -56,7 +62,10 @@ const Cake = () => {
                 key={key}
               />
             );
-          })}
+          })
+        ) : (
+          <Alert severity="warning">No existen combinaciones, favor crear al menos un Set.</Alert>
+        )}
       </div>
       <div className={styles.add} onClick={() => {}}>
         <FontAwesomeIcon icon={faCirclePlus} className={styles.icon} />
