@@ -14,27 +14,41 @@ import { Alert } from "@mui/material";
 import { listOptionSet, listSet } from "../../../redux/slices/masters/setSlice";
 
 // takes the options and return the exsiting ones on the set
-const optionBySet = (setsArray: any, options: any, trailIndex: any) => {
-  // variable to store the posible combination
-  let combination: any = [];
-  // array containing all the arrays of options available
-  setsArray.map((e: any) => {
-    // "e" is the Set object stored in db who defines the combinations
-    e[Object.keys(e)[trailIndex + 3]].map((id: any) => {
-     // array of cake ingredients
-     combination = options.map((categoryTable: any) => {
-       // array of ingredients options
-       return categoryTable.map((item: any) => {
-         // checks for index 3 of table Size to return a number instead
-         if (trailIndex === 3 && item.id === id) {
-           return { quantity: item.quantity };
-         } else if (item.id === id) {
-           return { name: item.name };
-         }
-       });
-     });
-   });
+const path = (setsArray: any, options: any, trailIndex: any) => {
+  // let combination: any = [];
+  let optionSet = setsArray[0];
+  let set = optionSet[Object.keys(optionSet)[trailIndex + 3]];
+
+  let optionList = options[trailIndex];
+
+  return set.map((e: any) => {
+    let arr: any = {};
+    optionList.map((f: any) => {
+      if (e === f.id) {
+        arr = { name: f.name };
+      }
+
+      if (trailIndex === 3 && e === f.id) {
+        arr = { quantity: f.quantity };
+      }
+    });
+    return arr;
   });
+
+  // setsArray.map((e: any) => {
+  //   e[Object.keys(e)[trailIndex + 3]].map((id: any) => {
+  //     combination = options.map((categoryTable: any) => {
+  //       return categoryTable.map((item: any) => {
+  //         if (trailIndex === 3 && item.id === id) {
+  //           return { quantity: item.quantity };
+  //         } else if (item.id === id) {
+  //           return { name: item.name };
+  //         }
+  //       });
+  //     });
+  //   });
+  // });
+
   // combination = combination.map((options: any) => {
   //   return options
   //     .map((label: any) => {
@@ -45,9 +59,8 @@ const optionBySet = (setsArray: any, options: any, trailIndex: any) => {
   //     });
   // });
 
-  console.log("combination available: ", combination);
+  // console.log("combination available: ", combination);
   // return combination;
-  return [[]]
 };
 
 const Cake = () => {
@@ -100,11 +113,7 @@ const Cake = () => {
             return (
               <ComboBox
                 label={e}
-                options={
-                  optionBySet(lst, opt, i)[i] !== undefined
-                    ? optionBySet(lst, opt, i)[i]
-                    : []
-                }
+                options={path(lst, opt, i) !== undefined ? path(lst, opt, i) : []}
                 index={i}
                 key={key}
               />
