@@ -15,7 +15,11 @@ import {
 import styles from "./Set.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { listOptionSet } from "../../../redux/slices/masters/setSlice";
+import {
+  listOptionSet,
+  listSet,
+  setSet,
+} from "../../../redux/slices/masters/setSlice";
 import Modal from "../../ui/myModal";
 import Dialog from "./Dialog";
 
@@ -25,7 +29,7 @@ const Set = () => {
   const [id, setId] = useState("");
   const [setState, setSetState] = useState<any>({
     shape: [],
-    dogh: [],
+    dough: [],
     flavor: [],
     size: [],
     cream: [],
@@ -44,9 +48,9 @@ const Set = () => {
     return state.setSlice.optionList;
   });
 
-  const set = useSelector((state: any) => {
-    return state.setSlice.set;
-  });
+  // const set = useSelector((state: any) => {
+  //   return state.setSlice.set;
+  // });
 
   const tables = [
     "Forma",
@@ -84,6 +88,7 @@ const Set = () => {
 
   useEffect(() => {
     listOptionSet(dispatch);
+    listSet(dispatch);
     console.log("new set: ", setState);
   }, []);
 
@@ -108,6 +113,16 @@ const Set = () => {
                               control={
                                 <Checkbox
                                   color="primary"
+                                  checked={(() => {
+                                    const key =
+                                      setState[Object.keys(setState)[tableIndex]];
+                                    console.log(key);
+                                    const found = key.find((e: any) => {
+                                      return e === item.id;
+                                    });
+
+                                    return found !== undefined ? true : false;
+                                  })()}
                                   onChange={() => {
                                     console.log(
                                       "check box: ",

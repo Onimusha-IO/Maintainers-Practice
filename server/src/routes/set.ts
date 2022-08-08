@@ -7,6 +7,6 @@ const SetRouter = Router();
 
 SetRouter.get("/optionList", auth, SetController.listOptionSet);
 SetRouter.get("/list", auth, SetController.listSet);
-SetRouter.get("/create", auth, SetController.createSet);
+SetRouter.post("/create", auth, SetController.createSet);
 
 export default SetRouter;

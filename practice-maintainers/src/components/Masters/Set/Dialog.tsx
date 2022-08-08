@@ -90,7 +90,7 @@ const Dialog = ({ onClose, action, setId, id, setName, set, labels }: any) => {
             setText("");
             setName({
               shape: [],
-              dogh: [],
+              dough: [],
               flavor: [],
               size: [],
               cream: [],

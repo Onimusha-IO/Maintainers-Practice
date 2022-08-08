@@ -14,6 +14,7 @@ Project created with:
     * Sass: 1.53.0
     * Typescript: 4.6.3,
     * Vite: 2.9.9
+    * Material: 5.9.3"
   
 #### Back End
     * Bcrypt: 5.0.1,
@@ -75,5 +76,23 @@ CREATE TABLE IF NOT EXISTS public."user"
     maternallastname character varying COLLATE pg_catalog."default" NOT NULL,
     hash character varying COLLATE pg_catalog."default",
     CONSTRAINT users_pkey PRIMARY KEY (id)
+)
+```
+
+Table: set
+```
+CREATE TABLE IF NOT EXISTS public.set
+(
+    id uuid NOT NULL DEFAULT gen_random_uuid(),
+    name character varying COLLATE pg_catalog."default",
+    enable boolean NOT NULL DEFAULT true,
+    shape_id character varying[] COLLATE pg_catalog."default",
+    dough_id character varying[] COLLATE pg_catalog."default",
+    flavor_id character varying[] COLLATE pg_catalog."default",
+    size_id character varying[] COLLATE pg_catalog."default",
+    cream_id character varying[] COLLATE pg_catalog."default",
+    filling_id character varying[] COLLATE pg_catalog."default",
+    extra_id character varying[] COLLATE pg_catalog."default",
+    CONSTRAINT set_pkey PRIMARY KEY (id)
 )
 ```

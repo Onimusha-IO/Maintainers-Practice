@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 const UiContext = createContext<any>(null);
 
 const UiProvider = ({ children }: any) => {
-  const [userValidated, setUserValidated] = useState(false);
+  const [userValidated, setUserValidated] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
   const [modal, setModal] = useState({
     state: false,

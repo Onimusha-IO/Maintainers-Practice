@@ -7,11 +7,11 @@ import MainPage from "./Pages/MainPage";
 import { UiProvider } from "./context/ui";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <UiProvider>
         <MainPage />
       </UiProvider>
     </Provider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
