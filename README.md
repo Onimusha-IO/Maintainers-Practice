@@ -96,3 +96,18 @@ CREATE TABLE IF NOT EXISTS public.set
     CONSTRAINT set_pkey PRIMARY KEY (id)
 )
 ```
+
+Table: combination
+```
+CREATE TABLE IF NOT EXISTS public.combination
+(
+    id uuid NOT NULL DEFAULT gen_random_uuid(),
+    shape_id character varying(255) COLLATE pg_catalog."default",
+    dough_id character varying(255) COLLATE pg_catalog."default",
+    flavor_id character varying(255) COLLATE pg_catalog."default",
+    size_id character varying(255) COLLATE pg_catalog."default",
+    cream_id character varying(255) COLLATE pg_catalog."default",
+    filling_id character varying(255) COLLATE pg_catalog."default",
+    extra_id character varying(255) COLLATE pg_catalog."default"
+)
+```

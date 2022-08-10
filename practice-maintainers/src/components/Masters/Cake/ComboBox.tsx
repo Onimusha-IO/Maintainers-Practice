@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 
 import { Autocomplete, TextField } from "@mui/material";
-import { setCombination } from "../../../redux/slices/masters/cakeSlice";
+// import { setCombination } from "../../../redux/slices/masters/cakeSlice";
 
 const ComboBox = ({ label, options, index }: any) => {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ const ComboBox = ({ label, options, index }: any) => {
     <Autocomplete
       options={options}
       onInputChange={(event, newInputValue, reason) => {
-        dispatch(setCombination({ index: index, value: newInputValue }));
+        // dispatch(setCombination({ index: index, value: newInputValue }));
       }}
       getOptionLabel={(option: any) => {
         return option.name || option.quantity.toString();

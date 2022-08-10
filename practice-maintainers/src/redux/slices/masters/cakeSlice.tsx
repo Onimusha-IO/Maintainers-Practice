@@ -5,8 +5,8 @@ import { config } from "../../../utils/config";
 
 const initialState = {
   list: [],
-  cake: [],
-  combination: ["", "", "", "", "", "", ""],
+  cake: ["", "", "", "", "", "", ""],
+  combination: [],
 };
 
 export const cakeSlice = createSlice({
@@ -17,10 +17,10 @@ export const cakeSlice = createSlice({
       state.list = action.payload;
     },
     setCake: (state, action) => {
-      state.cake = action.payload;
+      state.cake[action.payload.index] = action.payload.value;
     },
     setCombination: (state, action) => {
-      state.combination[action.payload.index] = action.payload.value;
+      state.combination = action.payload;
     },
     resetCake: (state) => {
       state.cake = initialState.cake;
@@ -47,7 +47,20 @@ export const listOption = async (dispatch: any) => {
       headers: config.headers,
     });
     dispatch(getOptionList(res.data));
+    console.log(res.data)
   } catch (error) {
     console.log("list Cake error: ", error);
+  }
+};
+
+export const listCombination = async (dispatch: any) => {
+  try {
+    const res = await client.get("api/combination/list", {
+      headers: config.headers,
+    });
+    dispatch(setCombination(res.data));
+    console.log(res.data);
+  } catch (error) {
+    console.log("list Cake combination error: ", error);
   }
 };
