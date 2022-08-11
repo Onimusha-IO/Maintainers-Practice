@@ -10,7 +10,7 @@ import UiContext from "../../../context/ui";
 import ComboBox from "./ComboBox";
 
 import styles from "./Cake.module.scss";
-import { Alert } from "@mui/material";
+import { Alert, AlertTitle, Box, CircularProgress } from "@mui/material";
 import {
   listCombination,
   listOption,
@@ -40,7 +40,6 @@ import {
 
 const Cake = () => {
   const { setShowMenu } = useContext(UiContext);
-  const [render, setRender] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -53,8 +52,8 @@ const Cake = () => {
     "Relleno",
     "Extra",
   ];
-  
-  const opt = useSelector((state: any) => {
+
+  const combination = useSelector((state: any) => {
     return state.cakeSlice.combination;
   });
 
@@ -63,13 +62,6 @@ const Cake = () => {
   });
 
   useEffect(() => {
-    
-    console.log("options: ", opt);
-    console.log("list: ", list);
-    if (opt.length > 0 && list.length > 0) {
-      setRender(true);
-    }
-
     listCombination(dispatch);
     listOption(dispatch);
   }, []);
@@ -83,15 +75,13 @@ const Cake = () => {
     >
       <label className={styles.label}>Tortas</label>
       <div className={styles.content}>
-        {render ? (
+        {combination.length > 0 && combination.length > 0 ? (
           tables.map((e: any, i: any) => {
             const key = nanoid();
             return <ComboBox label={e} options={list[i]} index={i} key={key} />;
           })
         ) : (
-          <Alert severity="warning">
-            No existen combinaciones, favor crear al menos un Set.
-          </Alert>
+          <CircularProgress />
         )}
       </div>
       <div className={styles.add} onClick={() => {}}>
